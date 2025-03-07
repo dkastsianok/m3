@@ -1,0 +1,92 @@
+<mat-form-field class="example-form-field">
+  <mat-label>Clearable input</mat-label>
+  <input matInput type="text" [(ngModel)]="value">
+  @if (value) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+           placeholder="Ex. pat@example.com">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+      <mat-error>Please enter a valid email address</mat-error>
+    }
+    @if (emailFormControl.hasError('required')) {
+      <mat-error>Email is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+</form>
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Message</mat-label>
+    <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+    <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+  </mat-form-field>
+</form>
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Telephone</mat-label>
+    <span matTextPrefix>+1 &nbsp;</span>
+    <input type="tel" matInput placeholder="555-555-1234">
+    <mat-icon matSuffix>mode_edit</mat-icon>
+  </mat-form-field>
+</form>
+
+<mat-divider>
+</mat-divider>
+
+<mat-form-field class="example-form-field-2" appearance="outline">
+  <mat-label>Clearable input</mat-label>
+  <input matInput type="text" [(ngModel)]="value">
+  @if (value) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+           placeholder="Ex. pat@example.com">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+      <mat-error>Please enter a valid email address</mat-error>
+    }
+    @if (emailFormControl.hasError('required')) {
+      <mat-error>Email is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+</form>
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Message</mat-label>
+    <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+    <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+  </mat-form-field>
+</form>
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Telephone</mat-label>
+    <span matTextPrefix>+1 &nbsp;</span>
+    <input type="tel" matInput placeholder="555-555-1234">
+    <mat-icon matSuffix>mode_edit</mat-icon>
+  </mat-form-field>
+</form>

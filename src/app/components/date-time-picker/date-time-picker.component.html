@@ -1,0 +1,14 @@
+<mat-form-field class="int-tool-datepicker__control" appearance="outline" subscriptSizing="dynamic">
+  <mat-label>Date</mat-label>
+
+  <input
+    [ngxMatDatetimePicker]="pickerFrom"
+    matInput
+    [formControl]="control"
+    (click)="openDatepickerPanel()"
+  />
+
+  <mat-datepicker-toggle matIconSuffix [for]="$any(pickerFrom)"/>
+
+  <ngx-mat-datetime-picker [restoreFocus]="false" [showSpinners]="false" [showSeconds]="true" #pickerFrom/>
+</mat-form-field>

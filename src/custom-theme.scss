@@ -1,0 +1,177 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+
+$palettes: (
+  primary: (
+    0: #000000,
+    10: #2B1700,
+    20: #472A00,
+    25: #563400,
+    30: #663E00,
+    35: #764800,
+    40: #865300,
+    50: #A76904,
+    60: #C68224,
+    70: #E49C3D,
+    80: #FFB962,
+    90: #FFDDB9,
+    95: #FFEEDE,
+    98: #FFF8F4,
+    99: #FFFBFF,
+    100: #FFFFFF
+  ),
+  secondary: (
+    0: #000000,
+    10: #2A1700,
+    20: #462A00,
+    25: #553400,
+    30: #653E00,
+    35: #754900,
+    40: #845405,
+    50: #A16C21,
+    60: #BE8538,
+    70: #DC9F50,
+    80: #FBBA68,
+    90: #FFDDB7,
+    95: #FFEEDE,
+    98: #FFF8F4,
+    99: #FFFBFF,
+    100: #FFFFFF
+  ),
+  tertiary: (
+    0: #000000,
+    10: #1E1B19,
+    20: #33302E,
+    25: #3E3B38,
+    30: #4A4644,
+    35: #56524F,
+    40: #625D5B,
+    50: #7B7673,
+    60: #95908D,
+    70: #B0AAA7,
+    80: #CCC5C2,
+    90: #E8E1DE,
+    95: #F7EFEC,
+    98: #FFF8F5,
+    99: #FFFBFF,
+    100: #FFFFFF
+  ),
+  neutral: (
+    0: #000000,
+    10: #1F1B16,
+    20: #352F2B,
+    25: #403A35,
+    30: #4C4640,
+    35: #58514C,
+    40: #645D57,
+    50: #7D7670,
+    60: #978F89,
+    70: #B2AAA3,
+    80: #CEC5BE,
+    90: #EBE1D9,
+    95: #F9EFE7,
+    98: #FFF8F4,
+    99: #FFFBFF,
+    100: #FFFFFF
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #221A11,
+    20: #382F25,
+    25: #443A2F,
+    30: #50453A,
+    35: #5C5045,
+    40: #685C51,
+    50: #827568,
+    60: #9C8E81,
+    70: #B7A99B,
+    80: #D4C4B5,
+    90: #F0E0D1,
+    95: #FFEEDE,
+    98: #FFF8F4,
+    99: #FFFBFF,
+    100: #FFFFFF
+  ),
+  error: (
+    0: #000000,
+    10: #410002,
+    20: #690005,
+    25: #7E0007,
+    30: #93000A,
+    35: #A80710,
+    40: #BA1A1A,
+    50: #DE3730,
+    60: #FF5449,
+    70: #FF5449,
+    80: #FF5449,
+    90: #FFDAD6,
+    95: #FFEDEA,
+    98: #FFF8F7,
+    99: #FFFBFF,
+    100: #FFFFFF
+  )
+);
+
+$rest: (
+  secondary: map.get($palettes, secondary),
+  neutral: map.get($palettes, neutral),
+  neutral-variant: map.get($palettes, neutral-variant),
+  error: map.get($palettes, error),
+);
+
+$primary-palette: map.merge(map.get($palettes, primary), $rest);
+$tertiary-palette: map.merge(map.get($palettes, tertiary), $rest);
+
+$theme: mat.define-theme(
+    (
+      color: (
+        theme-type: light,
+        primary: $primary-palette,
+        tertiary: $tertiary-palette,
+      ),
+      typography: (
+        plain-family: Roboto,
+        brand-family: Roboto,
+        bold-weight: 700,
+        medium-weight: 500,
+        regular-weight: 400,
+      ),
+      density: (),
+    )
+);
+
+
+html {
+  @include mat.all-component-themes($theme);
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* start TEMPORARY while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed */
+.mat-datepicker-content {
+  box-shadow:
+    0 2px 4px -1px #0003,
+    0 4px 5px #00000024,
+    0 1px 10px #0000001f !important;
+  background-color: var(--white) !important;
+  color: var(--color) !important;
+}
+
+.mat-calendar-body-disabled {
+  color: #ddd !important;
+}
+
+/* end TEMPORARY while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed  */
+
+.warn-button {
+  @include mat.button-color($theme, $color-variant: error);
+  @include mat.icon-button-color($theme, $color-variant: error);
+}
