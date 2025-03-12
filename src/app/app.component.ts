@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Renderer2, RendererFactory2} from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {MatPrefix} from '@angular/material/form-field';
 import {MatIcon} from '@angular/material/icon';
-import {MatDrawer, MatDrawerContainer, MatDrawerContent} from '@angular/material/sidenav';
+import {MatDrawer, MatDrawerContainer} from '@angular/material/sidenav';
 import {RouterLink, RouterOutlet} from '@angular/router';
 
 
@@ -14,7 +14,6 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 })
 export class AppComponent {
   title = 'm3';
-
   menu = [
     {title: 'Button', icon: 'home', link: '/button'},
     {title: 'Badge', icon: 'info', link: '/badge'},
@@ -27,5 +26,36 @@ export class AppComponent {
     {title: 'Table', icon: 'mail', link: '/table'},
     {title: 'Spinner', icon: 'mail', link: '/spinner'},
     {title: 'Date Time Picker', icon: 'mail', link: '/picker'},
+    {title: 'Card', icon: 'mail', link: '/card'},
+    {title: 'Chips', icon: 'mail', link: '/chips'},
+    {title: 'Progress', icon: 'mail', link: '/progress'},
+    {title: 'Radio Button', icon: 'mail', link: '/radio'},
   ]
+  private renderer: Renderer2;
+  private currentTheme: 'light-theme' | 'dark-theme' = 'light-theme';
+
+  constructor(rendererFactory: RendererFactory2) {
+    this.renderer = rendererFactory.createRenderer(null, null);
+    this.loadTheme();
+  }
+
+  toggleTheme(): void {
+    this.currentTheme = this.currentTheme === 'light-theme' ? 'dark-theme' : 'light-theme';
+    this.applyTheme();
+    localStorage.setItem('theme', this.currentTheme); // Save user preference
+  }
+
+  private applyTheme(): void {
+    this.renderer.removeClass(document.documentElement, 'light-theme');
+    this.renderer.removeClass(document.documentElement, 'dark-theme');
+    this.renderer.addClass(document.documentElement, this.currentTheme);
+  }
+
+  private loadTheme(): void {
+    const savedTheme = localStorage.getItem('theme') as 'light-theme' | 'dark-theme';
+    if (savedTheme) {
+      this.currentTheme = savedTheme;
+    }
+    this.applyTheme();
+  }
 }

@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButtonModule, MatIconButton} from '@angular/material/button';
@@ -26,7 +27,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatLabel,
     MatHint,
     MatError,
-    MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, MatDivider
+    MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, MatDivider, NgIf
   ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'

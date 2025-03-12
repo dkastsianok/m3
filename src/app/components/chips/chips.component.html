@@ -1,0 +1,128 @@
+<form>
+  <mat-form-field class="example-chip-list">
+    <mat-label>Favorite Fruits</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+      @for (fruit of fruits(); track $index) {
+        <mat-chip-row (removed)="remove(fruit)">
+          {{ fruit }}
+          <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      }
+    </mat-chip-grid>
+    <input
+      #fruitInput
+      (matChipInputTokenEnd)="add($event)"
+      [(ngModel)]="currentFruit"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipGrid"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      name="currentFruit"
+      placeholder="New Fruit..."
+    />
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event); fruitInput.value = ''">
+      @for (fruit of filteredFruits(); track fruit) {
+        <mat-option [value]="fruit">{{ fruit }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<mat-chip-set aria-label="Dog selection">
+  <mat-chip>
+    <img
+      alt="Photo of a Shiba Inu"
+      matChipAvatar
+      src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+    />
+    Dog one
+  </mat-chip>
+  <mat-chip>
+    <img
+      alt="Photo of a Shiba Inu"
+      matChipAvatar
+      src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+    />
+    Dog two
+  </mat-chip>
+  <mat-chip>
+    <img
+      alt="Photo of a Shiba Inu"
+      matChipAvatar
+      src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+    />
+    Dog three
+  </mat-chip>
+</mat-chip-set>
+
+<mat-chip-set
+  (cdkDropListDropped)="drop($event)"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  class="example-chip"
+>
+  @for (vegetable of vegetables(); track vegetable.name) {
+    <mat-chip class="example-box" cdkDrag>{{ vegetable.name }}</mat-chip>
+  }
+</mat-chip-set>
+
+
+<mat-form-field appearance="outline" class="example-chip-list">
+  <mat-label>Favorite Fruits</mat-label>
+  <mat-chip-grid #chipGrid2 aria-label="Enter fruits">
+    @for (fruit2 of fruits2(); track fruit2) {
+      <mat-chip-row
+        (removed)="remove2(fruit2)"
+        [editable]="true"
+        (edited)="edit(fruit2, $event)"
+        [aria-description]="'press enter to edit ' + fruit2.name"
+      >
+        {{ fruit2.name }}
+        <button matChipRemove [attr.aria-label]="'remove ' + fruit2.name">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+    <input
+      (matChipInputTokenEnd)="add($event)"
+      [matChipInputAddOnBlur]="addOnBlur"
+      [matChipInputFor]="chipGrid2"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      placeholder="New fruit..."
+    />
+  </mat-chip-grid>
+</mat-form-field>
+
+
+<mat-chip-set
+  (cdkDropListDropped)="drop($event)"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  class="example-chip"
+>
+  <mat-chip class="example-box"> Help</mat-chip>
+  <mat-chip>
+    <img
+      alt="Photo of a Shiba Inu"
+      matChipAvatar
+      src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+    />
+    Dog one
+  </mat-chip>
+  <mat-chip class="example-box ">
+    <mat-icon matChipTrailingIcon>check</mat-icon>
+    Help
+  </mat-chip>
+
+  <mat-chip class="example-box " disabled>
+    <mat-icon matChipTrailingIcon>check</mat-icon>
+    Help
+  </mat-chip>
+
+  <mat-chip class="example-box chip-filled">
+    <mat-icon matChipTrailingIcon>check</mat-icon>
+    Help
+  </mat-chip>
+
+</mat-chip-set>

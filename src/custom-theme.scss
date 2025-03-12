@@ -1,81 +1,78 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 @use 'sass:map';
 
-
 $palettes: (
   primary: (
     0: #000000,
-    10: #2B1700,
+    10: #2B1700, // on-primary-fixed
     20: #472A00,
     25: #563400,
-    30: #663E00,
+    30: #663E00, // on-primary-container, on-primary-fixed-variant
     35: #764800,
-    40: #865300,
+    40: #F1A747, // primary, surface-tint [--gold-primary]
     50: #A76904,
     60: #C68224,
-    70: #E49C3D,
-    80: #FFB962,
-    90: #FFDDB9,
+    70: #FAB762,
+    80: #FAB762, // primary-fixed-dim, inverse-primary
+    90: #FFDDB9, // primary-fixed
     95: #FFEEDE,
     98: #FFF8F4,
-    99: #FFFBFF,
-    100: #FFFFFF
+    99: #FFFBFF, // primary-container
+    100: #64391B // on-primary [--gold-on-primary]
   ),
   secondary: (
     0: #000000,
-    10: #2A1700,
+    10: #2A1700, // on-secondary-fixed
     20: #462A00,
     25: #553400,
-    30: #653E00,
+    30: #653E00, // on-secondary-container, on-secondary-fixed-variant
     35: #754900,
-    40: #845405,
+    40: #FFBE6B, // secondary
     50: #A16C21,
     60: #BE8538,
     70: #DC9F50,
-    80: #FBBA68,
-    90: #FFDDB7,
+    80: #FBBA68, // secondary-fixed-dim
+    90: #FFDDB7, // secondary-container, secondary-fixed
     95: #FFEEDE,
     98: #FFF8F4,
     99: #FFFBFF,
-    100: #FFFFFF
+    100: #693D1E // on-secondary
   ),
   tertiary: (
     0: #000000,
-    10: #1E1B19,
+    10: #1E1B19, //on-tertiary-fixed
     20: #33302E,
     25: #3E3B38,
-    30: #4A4644,
+    30: #4A4644, // on-tertiary-container, on-tertiary-fixed-variant
     35: #56524F,
-    40: #625D5B,
+    40: #272422, // tertiary
     50: #7B7673,
     60: #95908D,
     70: #B0AAA7,
-    80: #CCC5C2,
-    90: #E8E1DE,
+    80: #CCC5C2, // tertiary-fixed-dim
+    90: #E8E1DE, // tertiary-container, tertiary-fixed
     95: #F7EFEC,
     98: #FFF8F5,
     99: #FFFBFF,
-    100: #FFFFFF
+    100: #FAB762 // on-tertiary
   ),
   neutral: (
-    0: #000000,
-    10: #1F1B16,
-    20: #352F2B,
+    0: #000000, // scrim, shadow
+    10: #0F0F0F, // on-surface, on-background  - dla disabled
+    20: #352F2B, // inverse-surface
     25: #403A35,
-    30: #4C4640,
+    30: #989898, // changes on surface variant
     35: #58514C,
     40: #645D57,
-    50: #7D7670,
+    50: #7D7670, // outline
     60: #978F89,
     70: #B2AAA3,
     80: #CEC5BE,
-    90: #EBE1D9,
-    95: #F9EFE7,
-    98: #FFF8F4,
-    99: #FFFBFF,
+    90: #FFFFFF, // surface-container
+    95: #FFFFFF, // inverse-on-surface
+    98: #FFFFFF, // surface, background, surface-bright
     100: #FFFFFF
   ),
   neutral-variant: (
@@ -83,14 +80,14 @@ $palettes: (
     10: #221A11,
     20: #382F25,
     25: #443A2F,
-    30: #50453A,
+    30: #693D1E, // on-surface-variant ( input label + underline ) [--gold-on-secondary]
     35: #5C5045,
     40: #685C51,
-    50: #827568,
+    50: #989898,
     60: #9C8E81,
     70: #B7A99B,
-    80: #D4C4B5,
-    90: #F0E0D1,
+    80: #D9D9D9, // outline-variant + (обводка карточек)
+    90: #E8E8E8, // surface-variant (input filled bg) [--surface-text-fields]
     95: #FFEEDE,
     98: #FFF8F4,
     99: #FFFBFF,
@@ -101,9 +98,122 @@ $palettes: (
     10: #410002,
     20: #690005,
     25: #7E0007,
+    30: #93000A, // on-error-container
+    35: #A80710,
+    40: #D64E29, // error
+    50: #DE3730,
+    60: #FF5449,
+    70: #FF5449,
+    80: #FF5449,
+    90: #FFDAD6, // error-container
+    95: #FFEDEA,
+    98: #FFF8F7,
+    99: #FFFBFF,
+    100: #FFE8E1 // on-error
+  )
+);
+
+/** -------------------------------------------------------------------------------- */
+
+$palettes-dark: (
+  primary: (
+    0: rgba(0, 0, 0, 0),
+    10: rgba(0, 0, 0, 0),
+    20: rgba(0, 0, 0, 0),
+    25: rgba(0, 0, 0, 0),
+    30: rgba(0, 0, 0, 0),
+    35: rgba(0, 0, 0, 0),
+    40: #FAB762, // primary, surface-tint [--gold-primary]
+    50: rgba(0, 0, 0, 0),
+    60: rgba(0, 0, 0, 0),
+    70: rgba(0, 0, 0, 0),
+    80: rgba(0, 0, 0, 0),
+    90: rgba(0, 0, 0, 0),
+    95: rgba(0, 0, 0, 0),
+    98: rgba(0, 0, 0, 0),
+    99: rgba(0, 0, 0, 0),
+    100: #0F0F0F // on-primary [--gold-on-primary]
+  ),
+  secondary: (
+    0: #000000,
+    10: #2A1700,
+    20: #462A00,
+    25: #553400,
+    30: #653E00,
+    35: #754900,
+    40: #FFBE6B, //cnahged
+    50: #A16C21,
+    60: #BE8538,
+    70: #DC9F50,
+    80: #FBBA68,
+    90: #FFDDB7,
+    95: #FFEEDE,
+    98: #FFF8F4,
+    99: #FFFBFF,
+    100: #FAB762
+  ),
+  tertiary: (
+    0: #000000,
+    10: #1E1B19,
+    20: #33302E,
+    25: #3E3B38,
+    30: #4A4644,
+    35: #56524F,
+    40: #FFF8F0, // changed
+    50: #7B7673,
+    60: #95908D,
+    70: #B0AAA7,
+    80: #CCC5C2,
+    90: #E8E1DE,
+    95: #F7EFEC,
+    98: #FFF8F5,
+    99: #FFFBFF,
+    100: #693D1E // changed
+  ),
+  neutral: (
+    0: #000000,
+    10: #F6F6F6, //on background
+    20: #352F2B,
+    25: #403A35,
+    30: #4C4640,
+    35: #58514C,
+    40: #645D57,
+    50: #7D7670,
+    60: #978F89,
+    70: #B2AAA3,
+    80: #CEC5BE,
+    90: #0F0F0F,
+    95: #0F0F0F,
+    98: #0F0F0F,
+    99: #0F0F0F,
+    100: #0F0F0F
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #221A11,
+    20: #382F25,
+    25: #443A2F,
+    30: #FAB762, // on-surface-variant ( input label + underline ) [--gold-on-secondary]
+    35: #5C5045,
+    40: #685C51,
+    50: #827568,
+    60: #9C8E81,
+    70: #B7A99B,
+    80: #D4C4B5,
+    90: #1F1F1F, // surface-variant (input filled bg) [--surface-text-fields]
+    95: #0F0F0F,
+    98: #0F0F0F,
+    99: #0F0F0F,
+    100: #0F0F0F
+  ),
+  error: (
+    0: #000000,
+    10: #410002,
+    20: #690005,
+    25: #7E0007,
     30: #93000A,
     35: #A80710,
-    40: #BA1A1A,
+    40: #FF654A, //changed
     50: #DE3730,
     60: #FF5449,
     70: #FF5449,
@@ -112,7 +222,7 @@ $palettes: (
     95: #FFEDEA,
     98: #FFF8F7,
     99: #FFFBFF,
-    100: #FFFFFF
+    100: #411C14 //changed
   )
 );
 
@@ -123,13 +233,23 @@ $rest: (
   error: map.get($palettes, error),
 );
 
+$rest-dark: (
+  secondary: map.get($palettes-dark, secondary),
+  neutral: map.get($palettes-dark, neutral),
+  neutral-variant: map.get($palettes-dark, neutral-variant),
+  error: map.get($palettes-dark, error),
+);
+
+$dark-primary-palette: map.merge(map.get($palettes-dark, primary), $rest-dark);
+$dark-tertiary-palette: map.merge(map.get($palettes-dark, tertiary), $rest-dark);
+
 $primary-palette: map.merge(map.get($palettes, primary), $rest);
 $tertiary-palette: map.merge(map.get($palettes, tertiary), $rest);
 
-$theme: mat.define-theme(
+
+$light-theme: mat.define-theme(
     (
       color: (
-        theme-type: light,
         primary: $primary-palette,
         tertiary: $tertiary-palette,
       ),
@@ -144,10 +264,248 @@ $theme: mat.define-theme(
     )
 );
 
+$dark-theme: mat.define-theme(
+    (
+      color: (
+        primary: $dark-primary-palette,
+        tertiary: $dark-tertiary-palette,
+      ),
+    )
+);
+
 
 html {
-  @include mat.all-component-themes($theme);
+  @include mat.all-component-themes($light-theme);
+
+  &.light-theme {
+    --gold-primary: #F1A747;
+    --gold-primary-alt: #F3D6B2;
+    --gold-on-primary: #64391B;
+    --gold-secondary: #FFBE6B;
+    --gold-on-secondary: #693D1E;
+    --gold-tetruary: #272422;
+    --gold-on-tetruary: #FAB762;
+
+    --state-gold-hover: rgba(255, 163, 45, var(--state-gold-hover-opacity)); // color[--state-gold-color] + opacity[--state-gold-hover-opacity]
+    --state-gold-pressed: rgba(255, 163, 45, var(--state-gold-pressed-opacity)); // color[--state-gold-color] + opacity[--state-gold-pressed-opacity]
+    --state-gold-drag: rgba(255, 163, 45, var(--state-gold-drag-opacity)); // color[--state-gold-color] + opacity[--state-gold-drag-opacity]
+
+    --state-gold-hover--dim: rgba(105, 61, 30, var(--state-gold-hover--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-hover--dim-opacity]
+    --state-gold-pressed--dim: rgba(105, 61, 30, var(--state-gold-pressed--dim-opacityl)); // color[--state-gold--dim-color] + opacity[--state-gold-pressed--dim-opacity]
+    --state-gold-drag--dim: rgba(105, 61, 30, var(--state-gold-drag--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-drag--dim-opacity]
+
+    // Non-existent vars start; These vars do not exist in design system -> due to the fact the material handles it differently in some components and it's need to add opacity over it (color+opacity)
+    --state-gold-color: #FFA32D;
+    --state-gold--dim-color: #693D1E;
+
+    --state-error-color: #F36740;
+    --state-error--dim-color: #AE1F00;
+
+    --state-gold-hover-opacity: 0.12;
+    --state-gold-pressed-opacity: 0.20;
+    --state-gold-drag-opacity: 0.28;
+
+    --state-gold-hover--dim-opacity: 0.08;
+    --state-gold-pressed--dim-opacity: 0.12;
+    --state-gold-drag--dim-opacity: 0.16;
+
+    --state-error-hover-opacity: 0.12;
+    --state-error-pressed-opacity: 0.20;
+    --state-error-drag-opacity: 0.28;
+
+    --state-error-hover--dim-opacity: 0.08;
+    --state-error-pressed--dim-opacity: 0.12;
+    --state-error-drag--dim-opacity: 0.16;
+
+    --highlight-color: #000000;
+
+    --highlight-08-opacity: 0.08;
+    --highlight-12-opacity: 0.12;
+    --highlight-16-opacity: 0.16;
+
+    --highlight-inv-color: #FFFFFF;
+
+    --highlight-inv-08-opacity: 0.08;
+    --highlight-inv-12-opacity: 0.12;
+    --highlight-inv-16-opacity: 0.16;
+    // Non-existent vars end;
+
+    --error-primary: #D64E29;
+    --error-on-primary: #FFE8E1;
+    --error-secondary: #FFAD96;
+    --error-on-secondary: #AA3A1B;
+    --error-tertiary: #FFE7E0;
+    --error-on-teriary: #AA3A1B;
+
+    --state-error-hover: rgba(243, 103, 64, var(--state-error-hover-opacity)); // color[--state-error-color] + opacity[--state-error-hover-opacity]
+    --state-error-pressed: rgba(243, 103, 64, var(--state-error-pressed-opacity)); // color[--state-error-color] + opacity[--state-error-pressed-opacity]
+    --state-error-drag: rgba(243, 103, 64, var(--state-error-drag-opacity)); // color[--state-error-color] + opacity[--state-error-drag-opacity]
+
+    --state-error-hover--dim: rgba(174, 31, 0, var(--state-error-hover--dim-opacity)); // color[--state-error--dim-color] + opacity[--state-error-hover--dim-opacity]
+    --state-error-pressed--dim: rgba(174, 31, 0, var(--state-error-pressed--dim-opacity)); // color[--state-error--dim-color] + opacity[--state-error-pressed--dim-opacity]
+    --state-error-drag--dim: rgba(174, 31, 0, var(--state-error-drag--dim-opacity)); // color[--state-error--dim-color] + opacity[--state-error-drag--dim-opacity]
+
+    --basic-1: #0F0F0F;
+    --basic-2: #F9F9F9;
+    --basic-black-only: #0F0F0F;
+    --basic-white-only: #F9F9F9;
+
+    --item-diasble: rgba(15, 15, 15, 0.32); // #0F0F0F · 32%
+    --container-disabled: rgba(15, 15, 15, 0.12); // #0F0F0F · 12%
+
+    --highlight-08: rgba(0, 0, 0, var(--highlight-08-opacity)); // color[--highlight-color]
+    --highlight-12: rgba(0, 0, 0, var(--highlight-12-opacity)); // color[--highlight-color]
+    --highlight-16: rgba(0, 0, 0, var(--highlight-16-opacity)); // color[--highlight-color]
+
+    --highlight-inv-08: rgba(255, 255, 255, var(--highlight-inv-08-opacity)); // color[--highlight-inv-color]
+    --highlight-inv-12: rgba(255, 255, 255, var(--highlight-inv-12-opacity)); // color[--highlight-inv-color]
+    --highlight-inv-16: rgba(255, 255, 255, var(--highlight-inv-16-opacity)); // color[--highlight-inv-color]
+
+    --outline-100: #989898;
+    --outline-90: #AEAEAE;
+    --outline-80: #D9D9D9;
+    --outline-70: #EAEAEA;
+
+    --informative: #069CF0;
+    --negative: #D13550;
+    --notice: #FF6B17;
+    --positive: #2AA400;
+    --neutral: #444444;
+
+    --surface-level-1: #FFFFFF;
+    --surface-level-2: #F2F2F2;
+    --surface-level-3: #F9F9F9;
+    --surface-text-fields: #E8E8E8;
+    --surface-chips: #FBFBFB;
+    --surface-overlay: rgba(15, 15, 15, 0.65); // #0F0F0F · 65%
+
+    // TYPOGRAPHY COLORS START
+    --primary: #1F1F1F;
+    --secondary: #484848;
+    --tertiary: #646464;
+    --primary-inv: #F6F6F6;
+    --secondary-inv: #E2E2E2;
+    --tetriary-inv: #969696;
+    --links: #B77625;
+    // TYPOGRAPHY COLORS END
+  }
+
+  &.dark-theme {
+    --gold-primary: #FAB762;
+    --gold-primary-alt: #FFE8CA;
+    --gold-on-primary: #0F0F0F;
+    --gold-secondary: #5B4B38;
+    --gold-on-secondary: #FAB762;
+    --gold-tetruary: #FFF8F0;
+    --gold-on-tetruary: #693D1E;
+
+    --state-gold-hover: rgba(255, 222, 181, var(--state-gold-hover-opacity)); // color[--state-gold-color] + opacity[--state-gold-hover-opacity]
+    --state-gold-pressed: rgba(255, 222, 181, var(--state-gold-pressed-opacity)); // color[--state-gold-color] + opacity[--state-gold-pressed-opacity]
+    --state-gold-drag: rgba(255, 222, 181, var(--state-gold-drag-opacity)); // color[--state-gold-color] + opacity[--state-gold-drag-opacity]
+
+    --state-gold-hover--dim: rgba(91, 75, 56, var(--state-gold-hover--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-hover--dim-opacity]
+    --state-gold-pressed--dim: rgba(91, 75, 56, var(--state-gold-pressed--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-pressed--dim-opacity]
+    --state-gold-drag--dim: rgba(91, 75, 56, var(--state-gold-drag--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-drag--dim-opacity]
+
+    // Non-existent vars start; These vars do not exist in design system -> due to the fact the material handles it differently in some components and it's need to add opacity over it (color+opacity)
+    --state-gold-color: #FFDEB5;
+    --state-gold--dim-color: #5B4B38;
+
+    --state-error-color: #FFDCD5;
+    --state-error--dim-color: #671C0C;
+
+    --state-gold-hover-opacity: 0.12;
+    --state-gold-pressed-opacity: 0.20;
+    --state-gold-drag-opacity: 0.28;
+
+    --state-gold-hover--dim-opacity: 0.18;
+    --state-gold-pressed--dim-opacity: 0.32;
+    --state-gold-drag--dim-opacity: 0.48;
+
+    --state-error-hover-opacity: 0.12;
+    --state-error-pressed-opacity: 0.20;
+    --state-error-drag-opacity: 0.28;
+
+    --state-error-hover--dim-opacity: 0.18;
+    --state-error-pressed--dim-opacity: 0.32;
+    --state-error-drag--dim-opacity: 0.48;
+
+    --highlight-color: #FFFFFF;
+
+    --highlight-08-opacity: 0.08;
+    --highlight-12-opacity: 0.12;
+    --highlight-16-opacity: 0.16;
+
+    --highlight-inv-color: #000000;
+
+    --highlight-inv-08-opacity: 0.08;
+    --highlight-inv-12-opacity: 0.12;
+    --highlight-inv-16-opacity: 0.16;
+    // Non-existent vars end;
+
+    --error-primary: #FF654A;
+    --error-on-primary: #411C14;
+    --error-secondary: #FFAD96;
+    --error-on-secondary: #FF654A;
+    --error-tertiary: #FFC4B9;
+    --error-on-teriary: #411C14;
+
+    --state-error-hover: rgba(255, 220, 213, var(--state-error-hover-opacity)); // color[--state-error-color]
+    --state-error-pressed: rgba(255, 220, 213, var(--state-error-pressed-opacity)); // color[--state-error-color] + opacity[--state-error-pressed-opacity]
+    --state-error-drag: rgba(255, 220, 213, var(--state-error-drag-opacity)); // color[--state-error-color] + opacity[--state-error-drag-opacity]
+
+    --state-error-hover--dim: rgba(103, 28, 12, var(--state-error-hover--dim-opacity)); // color[--state-error--dim-color] + opacity[--state-error-hover--dim-opacity]
+    --state-error-pressed--dim: rgba(103, 28, 12, var(--state-error-pressed--dim-opacity)); // color[--state-error--dim-color] + opacity[--state-error-pressed--dim-opacity]
+    --state-error-drag--dim: rgba(103, 28, 12, var(--state-error-drag--dim-opacity)); // color[--state-error--dim-color] + opacity[--state-error-drag--dim-opacity]
+
+    --basic-1: #F9F9F9;
+    --basic-2: #0F0F0F;
+    --basic-black-only: #0F0F0F;
+    --basic-white-only: #F9F9F9;
+
+    --item-diasble: rgba(249, 249, 249 0.32); // #F9F9F9 · 32%
+    --container-disabled: rgba(249, 249, 249, 0.12); // #F9F9F9 · 12%
+
+    --highlight-08: rgba(255, 255, 255, var(--highlight-08-opacity)); // color[--highlight-color]
+    --highlight-12: rgba(255, 255, 255, var(--highlight-12-opacity)); // color[--highlight-color]
+    --highlight-16: rgba(255, 255, 255, var(--highlight-16-opacity)); // color[--highlight-color]
+
+    --highlight-inv-08: rgba(0, 0, 0, var(--highlight-inv-08-opacity)); // color[--highlight-inv-color]
+    --highlight-inv-12: rgba(0, 0, 0, var(--highlight-inv-12-opacity)); // color[--highlight-inv-color]
+    --highlight-inv-16: rgba(0, 0, 0, var(--highlight-inv-16-opacity)); // color[--highlight-inv-color]
+
+    --outline-100: #747474;
+    --outline-90: #575757;
+    --outline-80: #383838;
+    --outline-70: #282828;
+
+    --informative: #6AC4F6;
+    --negative: #FF6782;
+    --notice: #F47B37;
+    --positive: #89DD6C;
+    --neutral: #E2E2E2;
+
+    --surface-level-1: #0F0F0F;
+    --surface-level-2: #020202;
+    --surface-level-3: #171717;
+    --surface-text-fields: #1F1F1F;
+    --surface-chips: #171717;
+    --surface-overlay: rgba(15, 15, 15, 0.82); // #0F0F0F · 82%
+
+    // TYPOGRAPHY COLORS START
+    --primary: #F6F6F6;
+    --secondary: #CECECE;
+    --tertiary: #979797;
+    --primary-inv: #1F1F1F;
+    --secondary-inv: #444444;
+    --tetriary-inv: #9B9B9B;
+    --links: #FBC581;
+    // TYPOGRAPHY COLORS END
+
+    @include mat.all-component-colors($dark-theme);
+  }
 }
+
 
 .flex-column {
   display: flex;
@@ -157,10 +515,9 @@ html {
 
 /* start TEMPORARY while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed */
 .mat-datepicker-content {
-  box-shadow:
-    0 2px 4px -1px #0003,
-    0 4px 5px #00000024,
-    0 1px 10px #0000001f !important;
+  box-shadow: 0 2px 4px -1px #0003,
+  0 4px 5px #00000024,
+  0 1px 10px #0000001f !important;
   background-color: var(--white) !important;
   color: var(--color) !important;
 }
@@ -171,7 +528,237 @@ html {
 
 /* end TEMPORARY while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed  */
 
-.warn-button {
-  @include mat.button-color($theme, $color-variant: error);
-  @include mat.icon-button-color($theme, $color-variant: error);
+
+$primary-color: mat.get-theme-color($light-theme, primary);
+
+
+:root {
+  // Potentially vulnerable
+  -mdc-chip-elevated-container-color: var(--gold-primary-alt);
+
+  // BUTTONS START
+  @include mat.button-overrides((
+    // flat btn
+    filled-state-layer-color: var(--state-gold--dim-color),
+    filled-hover-state-layer-opacity: var(--state-gold-hover--dim-opacity),
+    filled-focus-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
+    filled-pressed-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
+    filled-ripple-color: var(--state-gold-pressed--dim),
+    // stroked btn
+    outlined-label-text-color: var(--gold-on-primary),
+    outlined-outline-color: var(--gold-primary),
+    outlined-state-layer-color: var(--state-gold-color),
+    outlined-hover-state-layer-opacity: var(--state-gold-hover-opacity),
+    outlined-focus-state-layer-opacity: var(--state-gold-pressed-opacity),
+    outlined-pressed-state-layer-opacity: var(--state-gold-pressed-opacity),
+    outlined-ripple-color: var(--state-gold-pressed),
+    // regular btn
+    text-label-text-color: var(--gold-on-primary),
+    text-state-layer-color: var(--state-gold-color),
+    text-hover-state-layer-opacity: var(--state-gold-hover-opacity),
+    text-focus-state-layer-opacity: var(--state-gold-pressed-opacity),
+    text-pressed-state-layer-opacity: var(--state-gold-pressed-opacity),
+    text-ripple-color: var(--state-gold-pressed),
+    // raised btn
+    protected-label-text-color: var(--gold-on-primary),
+    protected-container-color: var(--gold-primary-alt),
+    protected-state-layer-color: var(--state-gold--dim-color),
+    protected-hover-state-layer-opacity: var(--state-gold-hover--dim-opacity),
+    protected-focus-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
+    protected-pressed-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
+    protected-ripple-color: var(--state-gold-pressed--dim),
+  ));
+
+  .error-button {
+    @include mat.button-overrides((
+      // flat btn
+      filled-container-color: var(--error-primary),
+      filled-label-text-color: var(--error-on-primary),
+      filled-state-layer-color: var(--state-error--dim-color),
+      filled-hover-state-layer-opacity: var(--state-error-hover--dim-opacity),
+      filled-focus-state-layer-opacity: var(--state-error-pressed--dim-opacity),
+      filled-pressed-state-layer-opacity: var(--state-error-pressed--dim-opacity),
+      filled-ripple-color: var(--state-error-pressed--dim),
+      // stroked btn
+      outlined-label-text-color: var(--error-primary),
+      outlined-outline-color: var(--error-secondary),
+      outlined-state-layer-color: var(--state-error-color),
+      outlined-hover-state-layer-opacity: var(--state-error-hover-opacity),
+      outlined-focus-state-layer-opacity: var(--state-error-pressed-opacity),
+      outlined-pressed-state-layer-opacity: var(--state-error-pressed-opacity),
+      outlined-ripple-color: var(--state-error-pressed),
+      // regular btn
+      text-label-text-color: var(--error-primary),
+      text-state-layer-color: var(--state-error-color),
+      text-hover-state-layer-opacity: var(--state-error-hover-opacity),
+      text-focus-state-layer-opacity: var(--state-error-pressed-opacity),
+      text-pressed-state-layer-opacity: var(--state-error-pressed-opacity),
+      text-ripple-color: var(--state-error-pressed),
+      // raised btn
+      protected-label-text-color: var(--error-primary),
+      protected-container-color: var(--error-tertiary),
+      protected-state-layer-color: var(--state-error--dim-color),
+      protected-hover-state-layer-opacity: var(--state-error-hover--dim-opacity),
+      protected-focus-state-layer-opacity: var(--state-error-pressed--dim-opacity),
+      protected-pressed-state-layer-opacity: var(--state-error-pressed--dim-opacity),
+      protected-ripple-color: var(--state-error-pressed--dim),
+    ));
+  }
+
+  .plain-button {
+    @include mat.button-overrides((
+      // flat btn
+      filled-container-color: var(--basic-1),
+      filled-label-text-color: var(--basic-2),
+      filled-state-layer-color: var(--highlight-inv-color),
+      filled-hover-state-layer-opacity: var(--highlight-inv-08-opacity),
+      filled-focus-state-layer-opacity: var(--highlight-inv-12-opacity),
+      filled-pressed-state-layer-opacity: var(--highlight-inv-12-opacity),
+      filled-ripple-color: var(--highlight-12-inv),
+      // stroked btn
+      outlined-label-text-color: var(--basic-1),
+      outlined-outline-color: var(--outline-90),
+      outlined-state-layer-color: var(--highlight-color),
+      outlined-hover-state-layer-opacity: var(--highlight-08-opacity),
+      outlined-focus-state-layer-opacity: var(--highlight-12-opacity),
+      outlined-pressed-state-layer-opacity: var(--highlight-12-opacity),
+      outlined-ripple-color: var(--highlight-12),
+      // regular btn
+      text-label-text-color: var(--basic-1),
+      text-state-layer-color: var(--highlight-color),
+      text-hover-state-layer-opacity: var(--highlight-08-opacity),
+      text-focus-state-layer-opacity: var(--highlight-12-opacity),
+      text-pressed-state-layer-opacity: var(--highlight-12-opacity),
+      text-ripple-color: var(--highlight-12),
+      // raised btn
+      protected-label-text-color: var(--basic-1),
+      protected-container-color: var(--surface-text-fields),
+      protected-state-layer-color: var(--highlight-color),
+      protected-hover-state-layer-opacity: var(--highlight-08-opacity),
+      protected-focus-state-layer-opacity: var(--highlight-12-opacity),
+      protected-pressed-state-layer-opacity: var(--highlight-12-opacity),
+      protected-ripple-color: var(--highlight-12),
+    ));
+  }
+
+  // BUTTONS END
+
+  // ICON BUTTON STARTS
+  @include mat.icon-button-overrides((
+    icon-color: var(--gold-on-primary),
+    state-layer-color: var(--state-gold-color),
+    hover-state-layer-opacity: var(--state-gold-hover-opacity),
+    focus-state-layer-opacity: var(--state-gold-pressed-opacity),
+    pressed-state-layer-opacity: var(--state-gold-pressed-opacity),
+    ripple-color: var(--state-gold-pressed),
+  ));
+
+  .icon-error-button {
+    @include mat.icon-button-overrides((
+      icon-color: var(--error-on-secondary),
+      state-layer-color: var(--state-error-color),
+      hover-state-layer-opacity: var(--state-error-hover-opacity),
+      focus-state-layer-opacity: var(--state-error-pressed-opacity),
+      pressed-state-layer-opacity: var(--state-error-pressed-opacity),
+      ripple-color: var(--state-error-pressed),
+    ));
+  }
+
+  .icon-plain-button {
+    @include mat.icon-button-overrides((
+      icon-color: var(--basic-1),
+      state-layer-color: var(--highlight-color),
+      hover-state-layer-opacity: var(--highlight-08-opacity),
+      focus-state-layer-opacity: var(--highlight-12-opacity),
+      pressed-state-layer-opacity: var(--highlight-12-opacity),
+      ripple-color: var(--highlight-12),
+    ));
+  }
+
+  // ICON BUTTON ENDS
+
+  // CHECKBOX STARTS
+  @include mat.checkbox-overrides((
+    selected-pressed-state-layer-color: var(--state-gold-color),
+    unselected-icon-color: var(--outline-100),
+    unselected-hover-icon-color: var(--outline-100),
+    unselected-focus-icon-color: var(--outline-100),
+    unselected-pressed-state-layer-color: var(--outline-100),
+    disabled-selected-checkmark-color: var(--item-diasble),
+    disabled-selected-icon-color: var(--container-disabled),
+  ));
+  // CHECKBOX ENDS
+
+  // CHIPS STARTS
+  @include mat.chips-overrides((
+    outline-color: var(--outline-90),
+    focus-outline-color: var(--outline-90),
+    hover-state-layer-color: var(--state-gold-color),
+    hover-state-layer-opacity: var(--state-gold-hover-opacity),
+    selected-hover-state-layer-color: var(--state-gold-color),
+    selected-hover-state-layer-opacity: var(--state-gold-pressed-opacity),
+    focus-state-layer-color: var(--state-gold-color),
+    focus-state-layer-opacity: var(--state-gold-pressed-opacity),
+    label-text-color: var(--basic-black-only),
+    with-icon-icon-color: var(--basic-black-only),
+    with-trailing-icon-trailing-icon-color: var(--basic-black-only),
+  ));
+
+  .chip-filled {
+    @include mat.chips-overrides((
+      outline-color: var(--gold-primary-alt),
+      focus-outline-color: var(--outline-90),
+      hover-state-layer-color: var(--state-gold--dim-color),
+      hover-state-layer-opacity: var(--state-gold-hover--dim-opacity),
+      selected-hover-state-layer-color: var(--state-gold--dim-color),
+      selected-hover-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
+      focus-state-layer-color: var(--state-gold--dim-color),
+      focus-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
+    ));
+
+  }
+
+  // CHIPS ENDS
+
+  // SELECT STARTS
+  @include mat.select-overrides((
+    panel-background-color: var(--basic-2)
+  ));
+  // SELECT ENDS
+
+  // SLIDE TODDLE STARTS
+  @include mat.slide-toggle-overrides((
+    selected-handle-color: var(--surface-level-3),
+    selected-hover-state-layer-color: var(--highlight-color),
+    selected-hover-handle-color: var(--surface-level-3),
+    selected-pressed-handle-color: var(--surface-level-3),
+    selected-focus-handle-color: var(--surface-level-3),
+    unselected-hover-state-layer-color: var(--highlight-color),
+    unselected-handle-color: var(--basic-1),
+    unselected-hover-handle-color: var(--basic-1),
+    unselected-pressed-handle-color: var(--basic-1),
+    unselected-focus-handle-color: var(--basic-1),
+  ));
+  // SLIDE TODDLE ENDS
+
+  // RADIO BUTTON STARTS
+  @include mat.radio-overrides((
+    unselected-icon-color: var(--outline-100),
+    unselected-hover-icon-color: var(--outline-100),
+    unselected-focus-icon-color: var(--outline-100),
+  ))
+  // RADIO BUTTON ENDS
+}
+
+
+// !!!!!!!!! WARNING лучше так не делать
+mat-form-field {
+  .mat-mdc-form-field-icon-prefix,
+  .mat-mdc-form-field-icon-suffix {
+    color: var(--basic-1);
+  }
+}
+
+a {
+  color: var(--links);
 }

@@ -45,4 +45,20 @@ export const routes: Routes = [
     path: 'picker',
     loadComponent: () => import('./components/date-time-picker/date-time-picker.component').then(c => c.DateTimePickerComponent),
   },
+  {
+    path: 'card',
+    loadComponent: () => import('./components/card/card.component').then(c => c.CardComponent),
+  },
+  {
+    path: 'chips',
+    loadComponent: () => import('./components/chips/chips.component').then(c => c.ChipsComponent)
+  },
+  {
+    path: 'progress',
+    loadComponent: () => import('./components/progress/progress.component').then(c => c.ProgressComponent)
+  },
+  {
+    path: 'radio',
+    loadComponent: () => import('./components/radio/radio.component').then(c => c.RadioComponent)
+  }
 ];

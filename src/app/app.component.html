@@ -1,17 +1,21 @@
-<mat-drawer-container class="example-container" autosize>
+<mat-drawer-container autosize class="example-container">
   <mat-drawer #drawer class="example-sidenav" mode="side" opened>
     <div class="flex-column">
+      <button (click)="toggleTheme()" mat-button>
+        Switch Theme Mode
+      </button>
       @for (i of menu; track i.title) {
         <button mat-button [routerLink]="i.link">{{ i.title }}
           <mat-icon matIconPrefix>{{ i.icon }}</mat-icon>
         </button>
       }
     </div>
+
   </mat-drawer>
 
-<div class="outlet">
-  <router-outlet/>
-</div>
+  <div class="outlet">
+    <router-outlet/>
+  </div>
 
 
 </mat-drawer-container>

@@ -1,13 +1,51 @@
-<mat-form-field class="example-form-field">
-  <mat-label>Clearable input</mat-label>
-  <input matInput type="text" [(ngModel)]="value">
-  @if (value) {
-    <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  }
-</mat-form-field>
+<div class="flex-column">
+  <mat-form-field class="example-form-field">
+    <mat-label>Clearable input</mat-label>
+    <input matInput type="text" [(ngModel)]="value" #input="ngModel"
+           pattern="^[0-9]+$" required>
 
+    @if (value) {
+      <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+
+
+    <mat-error *ngIf="input.hasError(
+      'pattern') || input.hasError('required')">
+      Error
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Clearable input</mat-label>
+    <input matInput type="text" disabled [(ngModel)]="value" #input="ngModel"
+           pattern="^[0-9]+$" required>
+
+    @if (value) {
+      <button matSuffix mat-icon-button aria-label="Clear" class="icon-plain-button" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+
+    <mat-error *ngIf="input.hasError(
+      'pattern') || input.hasError('required')">
+      Error
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Clearable input</mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    @if (value) {
+      <button matPrefix class="icon-plain-button" mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+</div>
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
@@ -28,8 +66,8 @@
   <mat-form-field class="example-full-width">
     <mat-label>Message</mat-label>
     <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-    <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    <mat-hint align="start"><strong>Don't disclose personal info</strong></mat-hint>
+    <mat-hint align="end">{{ message.value.length }} / 256</mat-hint>
   </mat-form-field>
 </form>
 
@@ -76,8 +114,8 @@
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Message</mat-label>
     <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-    <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    <mat-hint align="start"><strong>Don't disclose personal info</strong></mat-hint>
+    <mat-hint align="end">{{ message.value.length }} / 256</mat-hint>
   </mat-form-field>
 </form>
 
