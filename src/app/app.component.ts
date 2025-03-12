@@ -30,6 +30,9 @@ export class AppComponent {
     {title: 'Chips', icon: 'mail', link: '/chips'},
     {title: 'Progress', icon: 'mail', link: '/progress'},
     {title: 'Radio Button', icon: 'mail', link: '/radio'},
+    {title: 'Dialog', icon: 'mail', link: '/dialog'},
+    {title: 'Menu', icon: 'mail', link: '/menu'},
+    {title: 'Tooltip', icon: 'mail', link: '/tooltip'},
   ]
   private renderer: Renderer2;
   private currentTheme: 'light-theme' | 'dark-theme' = 'light-theme';

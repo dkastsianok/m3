@@ -1,17 +1,22 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormField, MatLabel, MatSuffix} from '@angular/material/form-field';
+import {MatFormField, MatFormFieldModule, MatLabel, MatSuffix} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {
   NGX_MAT_DATE_FORMATS,
-  NgxMatDateAdapter, NgxMatDateFormats, NgxMatDatepickerInput,
+  NgxMatDateAdapter,
+  NgxMatDateFormats,
+  NgxMatDatepickerInput,
   NgxMatDatetimepicker,
   NgxMatNativeDateAdapter
 } from '@ngxmc/datetime-picker';
 
 export const DATE_TIME_PICKER_DISPLAY_FORMAT = 'DD/MM/YYYY HH:mm:ss';
+const today = new Date();
+const month = today.getMonth();
+const year = today.getFullYear();
 
 export const CUSTOM_DATE_TIME_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -36,10 +41,11 @@ export const CUSTOM_DATE_TIME_FORMATS: NgxMatDateFormats = {
     NgxMatDatepickerInput,
     ReactiveFormsModule,
     MatInput,
-    MatLabel
+    MatLabel,
+    MatFormFieldModule
   ],
   providers: [
-    { provide: NgxMatDateAdapter, useClass: NgxMatNativeDateAdapter },
+    {provide: NgxMatDateAdapter, useClass: NgxMatNativeDateAdapter},
     {
       provide: NGX_MAT_DATE_FORMATS,
       useValue: CUSTOM_DATE_TIME_FORMATS,
@@ -52,7 +58,16 @@ export class DateTimePickerComponent {
   @ViewChild('pickerFrom') public picker?: MatDatepicker<Date>;
 
   public control = new FormControl<Date | undefined>(undefined, {nonNullable: true});
+  readonly campaignOne = new FormGroup({
+    start: new FormControl(new Date(year, month, 13)),
+    end: new FormControl(new Date(year, month, 16)),
+  });
+  readonly campaignTwo = new FormGroup({
+    start: new FormControl(new Date(year, month, 15)),
+    end: new FormControl(new Date(year, month, 19)),
+  });
+
   public openDatepickerPanel(): void {
-      this.picker?.open();
+    this.picker?.open();
   }
 }

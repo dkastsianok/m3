@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -60,5 +60,17 @@ export const routes: Routes = [
   {
     path: 'radio',
     loadComponent: () => import('./components/radio/radio.component').then(c => c.RadioComponent)
+  },
+  {
+    path: 'dialog',
+    loadComponent: () => import('./components/dialog/dialog.component').then(c => c.DialogComponent),
+  },
+  {
+    path: 'menu',
+    loadComponent: () => import('./components/menu/menu.component').then(c => c.MenuComponent),
+  },
+  {
+    path: 'tooltip',
+    loadComponent: () => import('./components/tooltip/tooltip.component').then(c => c.TooltipComponent),
   }
 ];

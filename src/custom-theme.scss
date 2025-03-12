@@ -5,39 +5,39 @@
 
 $palettes: (
   primary: (
-    0: #000000,
-    10: #2B1700, // on-primary-fixed
-    20: #472A00,
-    25: #563400,
-    30: #663E00, // on-primary-container, on-primary-fixed-variant
-    35: #764800,
+    0: rgba(0, 0, 0, 0),
+    10: rgba(0, 0, 0, 0), // on-primary-fixed
+    20: rgba(0, 0, 0, 0),
+    25: rgba(0, 0, 0, 0),
+    30: rgba(0, 0, 0, 0), // on-primary-container, on-primary-fixed-variant
+    35: rgba(0, 0, 0, 0),
     40: #F1A747, // primary, surface-tint [--gold-primary]
-    50: #A76904,
-    60: #C68224,
-    70: #FAB762,
-    80: #FAB762, // primary-fixed-dim, inverse-primary
-    90: #FFDDB9, // primary-fixed
-    95: #FFEEDE,
-    98: #FFF8F4,
-    99: #FFFBFF, // primary-container
+    50: rgba(0, 0, 0, 0),
+    60: rgba(0, 0, 0, 0),
+    70: rgba(0, 0, 0, 0),
+    80: rgba(0, 0, 0, 0), // primary-fixed-dim, inverse-primary
+    90: rgba(0, 0, 0, 0), // primary-fixed
+    95: rgba(0, 0, 0, 0),
+    98: rgba(0, 0, 0, 0),
+    99: rgba(0, 0, 0, 0), // primary-container
     100: #64391B // on-primary [--gold-on-primary]
   ),
   secondary: (
-    0: #000000,
-    10: #2A1700, // on-secondary-fixed
-    20: #462A00,
-    25: #553400,
-    30: #653E00, // on-secondary-container, on-secondary-fixed-variant
-    35: #754900,
+    0: rgba(0, 0, 0, 0),
+    10: rgba(0, 0, 0, 0), // on-secondary-fixed
+    20: rgba(0, 0, 0, 0),
+    25: rgba(0, 0, 0, 0),
+    30: rgba(0, 0, 0, 0), // on-secondary-container, on-secondary-fixed-variant
+    35: rgba(0, 0, 0, 0),
     40: #FFBE6B, // secondary
-    50: #A16C21,
-    60: #BE8538,
-    70: #DC9F50,
-    80: #FBBA68, // secondary-fixed-dim
-    90: #FFDDB7, // secondary-container, secondary-fixed
-    95: #FFEEDE,
-    98: #FFF8F4,
-    99: #FFFBFF,
+    50: rgba(0, 0, 0, 0),
+    60: rgba(0, 0, 0, 0),
+    70: rgba(0, 0, 0, 0),
+    80: rgba(0, 0, 0, 0), // secondary-fixed-dim
+    90: rgba(0, 0, 0, 0), // secondary-container, secondary-fixed
+    95: rgba(0, 0, 0, 0),
+    98: rgba(0, 0, 0, 0),
+    99: rgba(0, 0, 0, 0),
     100: #693D1E // on-secondary
   ),
   tertiary: (
@@ -157,18 +157,18 @@ $palettes-dark: (
     10: #1E1B19,
     20: #33302E,
     25: #3E3B38,
-    30: #4A4644,
+    30: #693D1E, // on-tertiary-container
     35: #56524F,
     40: #FFF8F0, // changed
     50: #7B7673,
     60: #95908D,
     70: #B0AAA7,
     80: #CCC5C2,
-    90: #E8E1DE,
+    90: #FFF8F0, // tertiary-container
     95: #F7EFEC,
     98: #FFF8F5,
     99: #FFFBFF,
-    100: #693D1E // changed
+    100: #693D1E // changed on-tertiary
   ),
   neutral: (
     0: #000000,
@@ -504,6 +504,20 @@ html {
 
     @include mat.all-component-colors($dark-theme);
   }
+
+  // VULNERABLE MATERIAL VARS REASSIGNMENT START
+
+  .chip-filled {
+    --mdc-chip-elevated-container-color: var(--gold-primary-alt)
+  }
+
+  // VULNERABLE MATERIAL VARS REASSIGNMENT END
+
+  // ADDITIONAL VARS START
+  --datepicker-container-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+
+  // ADDITIONAL VARS END
+
 }
 
 
@@ -513,17 +527,33 @@ html {
   gap: 16px;
 }
 
-/* start TEMPORARY while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed */
+.flex {
+  display: flex;
+  gap: 16px;
+}
+
+///* start TEMPORARY while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed */
 .mat-datepicker-content {
-  box-shadow: 0 2px 4px -1px #0003,
-  0 4px 5px #00000024,
-  0 1px 10px #0000001f !important;
-  background-color: var(--white) !important;
-  color: var(--color) !important;
+  --mat-datepicker-calendar-container-elevation-shadow: var(--datepicker-container-shadow);
+  --mat-datepicker-calendar-container-background-color: var(--surface-level-3);
+  --mat-datepicker-calendar-container-text-color: var(--basic-1);
+  --mat-datepicker-calendar-body-label-text-color: var(--basic-1);
+  --mat-datepicker-calendar-header-text-color: var(--basic-1);
+  --mat-datepicker-calendar-date-text-color: var(--basic-1);
+  --mdc-icon-button-icon-color: var(--basic-1);
+  --mdc-text-button-label-text-color: var(--basic-1);
+
+  .mat-calendar-body-cell-content {
+    color: var(--basic-1);
+
+    &.mat-calendar-body-selected {
+      color: var(--basic-black-only);
+    }
+  }
 }
 
 .mat-calendar-body-disabled {
-  color: #ddd !important;
+  color: var(--item-diasble);
 }
 
 /* end TEMPORARY while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed  */
@@ -533,9 +563,6 @@ $primary-color: mat.get-theme-color($light-theme, primary);
 
 
 :root {
-  // Potentially vulnerable
-  -mdc-chip-elevated-container-color: var(--gold-primary-alt);
-
   // BUTTONS START
   @include mat.button-overrides((
     // flat btn
@@ -714,16 +741,64 @@ $primary-color: mat.get-theme-color($light-theme, primary);
       selected-hover-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
       focus-state-layer-color: var(--state-gold--dim-color),
       focus-state-layer-opacity: var(--state-gold-pressed--dim-opacity),
+      label-text-color: var(--basic-black-only),
+      with-icon-icon-color: var(--basic-black-only),
+      with-trailing-icon-trailing-icon-color: var(--basic-black-only),
     ));
-
   }
 
   // CHIPS ENDS
 
-  // SELECT STARTS
-  @include mat.select-overrides((
-    panel-background-color: var(--basic-2)
+  // DATEPICKER STARTS
+
+  @include mat.datepicker-overrides((
+    calendar-container-background-color: var(--surface-level-3),
+    calendar-container-elevation-shadow: var(--datepicker-container-shadow),
+    calendar-date-selected-state-text-color: var(--basic-black-only),
+    calendar-body-label-text-color: var(--basic-1),
+    calendar-header-text-color: var(--basic-1),
+    calendar-date-text-color: var(--basic-1),
+    calendar-container-text-color: var(--basic-1),
+    calendar-period-button-text-color: var(--basic-1),
+    calendar-period-button-icon-color: var(--basic-1),
+    calendar-navigation-button-icon-color: var(--basic-1),
+    // TODO - something is wrong with dark theme
+    //calendar-date-in-comparison-range-state-background-color: red,
+    //calendar-date-in-range-state-background-color: green,
+    //calendar-date-in-overlap-range-state-background-color: yellow,
+    //calendar-date-in-overlap-range-selected-state-background-color: blue
+    //
   ));
+
+  // DATEPICKER ENDS
+
+  // DIALOG STARTS
+  @include mat.dialog-overrides((
+    container-color: var(--surface-level-3),
+    subhead-color: var(--primary),
+    supporting-text-color: var(--secondary),
+  ));
+
+  // DIALOG ENDS
+
+  // MENU STARTS
+  @include mat.menu-overrides((
+    container-color: var(--surface-level-3),
+    item-icon-color: var(--secondary),
+    item-label-text-color: var(--secondary),
+  ));
+
+  // MENU ENDS
+
+  // TOOLTIP STARTS
+  @include mat.tooltip-overrides((
+    container-color: var(--basic-1),
+    supporting-text-color: var(--basic-2),
+  ));
+  // TOOLTIP ENDS
+
+  // SELECT STARTS
+  @include mat.select-overrides((panel-background-color:var(--basic-2)));
   // SELECT ENDS
 
   // SLIDE TODDLE STARTS
@@ -750,15 +825,3 @@ $primary-color: mat.get-theme-color($light-theme, primary);
   // RADIO BUTTON ENDS
 }
 
-
-// !!!!!!!!! WARNING лучше так не делать
-mat-form-field {
-  .mat-mdc-form-field-icon-prefix,
-  .mat-mdc-form-field-icon-suffix {
-    color: var(--basic-1);
-  }
-}
-
-a {
-  color: var(--links);
-}
