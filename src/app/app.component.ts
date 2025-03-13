@@ -15,6 +15,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 export class AppComponent {
   title = 'm3';
   menu = [
+    {title: 'Typography', link: '/typography'},
     {title: 'Button', icon: 'home', link: '/button'},
     {title: 'Badge', icon: 'info', link: '/badge'},
     {title: 'Button Toggle', icon: 'mail', link: '/button-toggle'},
@@ -33,6 +34,9 @@ export class AppComponent {
     {title: 'Dialog', icon: 'mail', link: '/dialog'},
     {title: 'Menu', icon: 'mail', link: '/menu'},
     {title: 'Tooltip', icon: 'mail', link: '/tooltip'},
+    {title: 'Bottom Sheet', icon: 'mail', link: '/bottom-sheet'},
+    {title: 'Snackbar', icon: 'mail', link: '/snack-bar'},
+    {title: 'Tags', icon: 'mail', link: '/tags'},
   ]
   private renderer: Renderer2;
   private currentTheme: 'light-theme' | 'dark-theme' = 'light-theme';

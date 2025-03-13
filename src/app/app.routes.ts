@@ -72,5 +72,21 @@ export const routes: Routes = [
   {
     path: 'tooltip',
     loadComponent: () => import('./components/tooltip/tooltip.component').then(c => c.TooltipComponent),
+  },
+  {
+    path: 'bottom-sheet',
+    loadComponent: () => import('./components/bottom-sheet/bottom-sheet.component').then(c => c.BottomSheetOverviewExample),
+  },
+  {
+    path: 'snack-bar',
+    loadComponent: () => import('./components/snackbar/snackbar.component').then(c => c.SnackbarComponent),
+  },
+  {
+    path: 'tags',
+    loadComponent: () => import('./components/tags/tags.component').then(c => c.TagsComponent),
+  },
+  {
+    path: 'typography',
+    loadComponent: () => import('./components/typography/typography.component').then(c => c.TypographyComponent),
   }
 ];

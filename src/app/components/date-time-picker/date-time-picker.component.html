@@ -8,6 +8,7 @@
     <input
       (click)="openDatepickerPanel()"
       [formControl]="control"
+      [min]="dateMax"
       [ngxMatDatetimePicker]="pickerFrom"
       matInput
     />
@@ -48,4 +49,12 @@
       <mat-date-range-picker #campaignTwoPicker></mat-date-range-picker>
     </mat-form-field>
   </div>
+
+  <mat-form-field [style.max-width]="'300px'" class="example-full-width">
+    <mat-label>Choose a date</mat-label>
+    <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" matInput>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle [for]="picker" matIconSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 </div>

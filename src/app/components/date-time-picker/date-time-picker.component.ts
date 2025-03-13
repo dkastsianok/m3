@@ -56,6 +56,8 @@ export const CUSTOM_DATE_TIME_FORMATS: NgxMatDateFormats = {
 })
 export class DateTimePickerComponent {
   @ViewChild('pickerFrom') public picker?: MatDatepicker<Date>;
+  tomorrow = new Date();
+  dateMax = this.tomorrow.setDate(this.tomorrow.getDate() - 1);
 
   public control = new FormControl<Date | undefined>(undefined, {nonNullable: true});
   readonly campaignOne = new FormGroup({
@@ -70,4 +72,10 @@ export class DateTimePickerComponent {
   public openDatepickerPanel(): void {
     this.picker?.open();
   }
+
+  myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
 }
