@@ -3,7 +3,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-
 $light-palettes: (
   primary: (
     0: rgba(0, 0, 0, 0),
@@ -28,7 +27,7 @@ $light-palettes: (
     10: rgba(0, 0, 0, 0), // on-secondary-fixed
     20: rgba(0, 0, 0, 0),
     25: rgba(0, 0, 0, 0),
-    30: rgba(15, 15, 15, 0.32), // on-secondary-container, on-secondary-fixed-variant [--item-disable] (select disabled option text color)
+    30: rgba(15, 15, 15, 0.32), // on-secondary-container, on-secondary-fixed-variant [--item-disable]
     35: rgba(0, 0, 0, 0),
     40: #FFBE6B, // secondary [--gold-secondary]
     50: rgba(0, 0, 0, 0),
@@ -148,7 +147,7 @@ $dark-palettes: (
     10: rgba(0, 0, 0, 0), // on-secondary-fixed
     20: rgba(0, 0, 0, 0),
     25: rgba(0, 0, 0, 0),
-    30: rgba(249, 249, 249, 0.22), // on-secondary-container, on-secondary-fixed-variant [--item-disable] (select disabled option text color)
+    30: rgba(249, 249, 249, 0.22), // on-secondary-container, on-secondary-fixed-variant [--item-disable]
     35: rgba(0, 0, 0, 0),
     40: #FFBE6B, // secondary [--gold-secondary]
     50: rgba(0, 0, 0, 0),
@@ -245,8 +244,25 @@ $dark-primary-palette: map.merge(map.get($dark-palettes, primary), $rest-dark);
 $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark);
 
 :root {
+  /* SPACE VARS START */
+  // Spacing scale: name ≠ pixel value. Numbers represent steps in a spacing scale, not pixel values; Example: --space-4 = 8px, --space-8 = 16px
+  --space-0: 0px;
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 32px;
+  --space-20: 40px;
+  --space-24: 48px;
+  --space-28: 56px;
 
-  // CORNERS VARS START
+  /* SPACE VARS END */
+
+  /* CORNERS VARS START */
 
   --corner-none: 0;
   --corner-xs: 4px;
@@ -256,7 +272,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
   --corner-xl: 28px;
   --corner-full: 1000px;
 
-  // CORNERS VARS END
+  /* CORNERS VARS END  */
 
   &.light-theme {
     --gold-primary: #F1A747;
@@ -272,7 +288,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --state-gold-drag: rgba(255, 163, 45, var(--state-gold-drag-opacity)); // color[--state-gold-color] + opacity[--state-gold-drag-opacity]
 
     --state-gold-hover--dim: rgba(105, 61, 30, var(--state-gold-hover--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-hover--dim-opacity]
-    --state-gold-pressed--dim: rgba(105, 61, 30, var(--state-gold-pressed--dim-opacityl)); // color[--state-gold--dim-color] + opacity[--state-gold-pressed--dim-opacity]
+    --state-gold-pressed--dim: rgba(105, 61, 30, var(--state-gold-pressed--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-pressed--dim-opacity]
     --state-gold-drag--dim: rgba(105, 61, 30, var(--state-gold-drag--dim-opacity)); // color[--state-gold--dim-color] + opacity[--state-gold-drag--dim-opacity]
 
     --error-primary: #D64E29;
@@ -324,7 +340,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --surface-chips: #FBFBFB;
     --surface-overlay: rgba(15, 15, 15, 0.65); // #0F0F0F · 65%
 
-    // TYPOGRAPHY COLORS START
+    /* TYPOGRAPHY COLORS START  */
     --primary: #1F1F1F;
     --secondary: #484848;
     --tertiary: #646464;
@@ -332,7 +348,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --secondary-inv: #E2E2E2;
     --tetriary-inv: #969696;
     --links: #B77625;
-    // TYPOGRAPHY COLORS END
+    /* TYPOGRAPHY COLORS END  */
 
     --pink: #C11574;
     --dark-blue: #175CD3;
@@ -340,8 +356,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --purple: #4A1FB8;
     --pine: #027A48;
 
-
-    // Non-existent vars start; These vars do not exist in design system -> due to the fact the material handles it differently in some components and it's need to add opacity over it (color+opacity)
+    /* Non-existent vars start; These vars do not exist in design system -> due to the fact the material handles it differently in some components and it's need to add opacity over it (color+opacity)  */
     --state-gold-color: #FFA32D;
     --state-gold--dim-color: #693D1E;
 
@@ -388,7 +403,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --purple-bg: rgba(74, 31, 184, 0.12);
     --pine-bg: rgba(2, 122, 72, 0.12);
 
-    // Non-existent vars end;
+    /* Non-existent vars end  */
   }
 
   &.dark-theme {
@@ -457,7 +472,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --surface-chips: #171717;
     --surface-overlay: rgba(15, 15, 15, 0.82); // #0F0F0F · 82%
 
-    // TYPOGRAPHY COLORS START
+    /* TYPOGRAPHY COLORS START  */
     --primary: #F6F6F6;
     --secondary: #CECECE;
     --tertiary: #979797;
@@ -465,7 +480,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --secondary-inv: #444444;
     --tetriary-inv: #9B9B9B;
     --links: #FBC581;
-    // TYPOGRAPHY COLORS END
+    /* TYPOGRAPHY COLORS END  */
 
     --pink: #EE46BC;
     --dark-blue: #2E90FA;
@@ -473,7 +488,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --purple: #9B8AFB;
     --pine: #32D583;
 
-    // Non-existent vars start; These vars do not exist in design system -> due to the fact the material handles it differently in some components and it's need to add opacity over it (color+opacity)
+    /* Non-existent vars start; These vars do not exist in design system -> due to the fact the material handles it differently in some components and it's need to add opacity over it (color+opacity)  */
     --state-gold-color: #FFDEB5;
     --state-gold--dim-color: #5B4B38;
 
@@ -519,12 +534,20 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --indigo-bg: rgba(128, 152, 249, 0.12);
     --purple-bg: rgba(155, 138, 251, 0.12);
     --pine-bg: rgba(50, 213, 131, 0.12);
-    // Non-existent vars end;
+    /* Non-existent vars end  */
 
   }
 }
 
 html {
+  height: 100%;
+
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, sans-serif;
+  }
+
   @include mat.theme(
       (
         color: (
@@ -550,9 +573,8 @@ html {
   ));
 }
 
-
 :root {
-  // BUTTONS START
+  /* BUTTONS START */
   @include mat.button-overrides((
     // flat btn
     filled-state-layer-color: var(--state-gold--dim-color),
@@ -562,7 +584,7 @@ html {
     filled-ripple-color: var(--state-gold-pressed--dim),
     // stroked btn
     outlined-label-text-color: var(--gold-on-secondary),
-    outlined-outline-color: var(--gold-primary),
+    outlined-outline-color: var(--gold-secondary),
     outlined-state-layer-color: var(--state-gold-color),
     outlined-hover-state-layer-opacity: var(--state-gold-hover-opacity),
     outlined-focus-state-layer-opacity: var(--state-gold-pressed-opacity),
@@ -657,9 +679,29 @@ html {
     ));
   }
 
-  // BUTTONS END
+  // vulnerable material styles reassignment
+  .mat-mdc-fab,
+  .mat-mdc-mini-fab {
+    background-color: var(--gold-primary-alt) !important;
+    color: var(--gold-on-primary) !important;
 
-  // ICON BUTTON STARTS
+    &:hover::before {
+      background-color: var(--state-gold-hover--dim) !important;
+    }
+
+    &:focus::before {
+      background-color: var(--state-gold-pressed--dim) !important;
+    }
+
+    &[disabled] {
+      background-color: var(--container-disabled) !important;
+      color: var(--item-disable) !important;
+    }
+  }
+
+  /* BUTTONS END  */
+
+  /* ICON BUTTON STARTS  */
   @include mat.icon-button-overrides((
     icon-color: var(--gold-on-secondary),
     state-layer-color: var(--state-gold-color),
@@ -691,18 +733,18 @@ html {
     ));
   }
 
-  // ICON BUTTON ENDS
+  /* ICON BUTTON ENDS  */
 
-  // BUTTON TOGGLE STARTS
+  /* BUTTON TOGGLE STARTS  */
   @include mat.button-toggle-overrides((
     text-color: var(--basic-1),
     selected-state-text-color: var(--basic-black-only),
     selected-state-background-color: var(--gold-primary-alt),
     divider-color: var(--outline-100)
   ));
-  // BUTTON TOGGLE ENDS
+  /* BUTTON TOGGLE ENDS  */
 
-  // CHECKBOX STARTS
+  /* CHECKBOX STARTS  */
   @include mat.checkbox-overrides((
     selected-pressed-state-layer-color: var(--state-gold-color),
     unselected-icon-color: var(--outline-100),
@@ -712,11 +754,12 @@ html {
     disabled-selected-checkmark-color: var(--item-disable),
     disabled-selected-icon-color: var(--container-disabled),
   ));
-  // CHECKBOX ENDS
+  /* CHECKBOX ENDS  */
 
-  // CHIPS STARTS
+  /* CHIPS STARTS  */
   & {
-    --mdc-chip-elevated-container-color: var(--surface-chips); // vulnerable material var reassignment
+    // vulnerable material styles reassignment
+    --mdc-chip-elevated-container-color: var(--surface-chips);
   }
 
   @include mat.chips-overrides((
@@ -735,7 +778,8 @@ html {
 
   .chip-filled {
     & {
-      --mdc-chip-elevated-container-color: var(--gold-primary-alt); // vulnerable material var reassignment
+      // vulnerable material styles reassignment
+      --mdc-chip-elevated-container-color: var(--gold-primary-alt);
     }
 
     @include mat.chips-overrides((
@@ -753,14 +797,19 @@ html {
     ));
   }
 
-  // CHIPS ENDS
+  /* CHIPS ENDS  */
 
-  // DATEPICKER STARTS
+  /* DATEPICKER STARTS  */
+
+  & {
+    --datepicker-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  }
 
   @include mat.datepicker-overrides((
     calendar-container-background-color: var(--surface-level-3),
-    calendar-container-elevation-shadow: var(0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15)), // added here to propagate also into ngx-mat-datepicker
+    calendar-container-elevation-shadow: var(--datepicker-shadow), // added here to propagate also into ngx-mat-datepicker
     calendar-date-selected-state-text-color: var(--basic-black-only),
+    calendar-date-today-outline-color: var(--gold-primary),
     calendar-date-hover-state-background-color: var(--state-gold-hover),
     calendar-body-label-text-color: var(--basic-1),
     calendar-header-text-color: var(--basic-1),
@@ -771,10 +820,13 @@ html {
     calendar-period-button-icon-color: var(--basic-1),
     calendar-navigation-button-icon-color: var(--basic-1),
     calendar-date-today-selected-state-outline-color: var(--gold-primary),
-    calendar-container-shape: 16px, // added here to propagate also into ngx-mat-datepicker
+    calendar-container-shape: var(--corner-l), // added here to propagate also into ngx-mat-datepicker
     calendar-date-outline-color: rgba(0, 0, 0, 0), // added here to propagate also into ngx-mat-datepicker
     calendar-date-selected-state-background-color: var(--gold-primary),
     toggle-icon-color: var(--basic-1),
+    calendar-date-today-disabled-state-outline-color: var(--container-disabled),
+    calendar-date-selected-disabled-state-background-color: var(--container-disabled),
+    calendar-date-focus-state-background-color: var(--state-gold-pressed),
     // TODO - not in design system yet
     calendar-date-in-comparison-range-state-background-color: red !important,
     calendar-date-in-range-state-background-color: green !important,
@@ -783,68 +835,109 @@ html {
     //
   ));
 
-  // DATEPICKER ENDS
+  /* DATEPICKER ENDS  */
 
-  // DATETIMEPICKER STARTS https://github.com/h2qutc/angular-material-components/issues/348 is not fixed */
+  /* DATE-TIME-PICKER STARTS https://github.com/h2qutc/angular-material-components/issues/348 is not fixed */
+  // some of the vars can't be reassigned using styling tokens  -> that's why it's needed to be done here; mostly needed for ngx-mat-datetime-picker
+  // vulnerable material styles reassignment
   .mat-datepicker-content {
-    --mdc-icon-button-icon-color: var(--basic-1); // vulnerable material var reassignment; needed for ngx-mat-datetime-picker
-    --mdc-text-button-label-text-color: var(--basic-1); // vulnerable material var reassignment; needed for ngx-mat-datetime-picker
+    --mdc-icon-button-icon-color: var(--basic-1) !important;
+    --mdc-text-button-label-text-color: var(--basic-1) !important;
 
     polygon {
-      fill: var(--basic-1);
+      fill: var(--basic-1) !important;
+    }
+
+    .mat-calendar-body-disabled {
+      .mat-calendar-body-cell-content {
+        color: var(--item-disable) !important;
+      }
     }
 
     .mat-calendar-body-cell-content {
-      color: var(--basic-1);
+      color: var(--basic-1) !important;
 
       &.mat-calendar-body-selected {
-        color: var(--basic-black-only);
+        color: var(--basic-black-only) !important;
       }
     }
   }
 
-  // DATETIMEPICKER ENDS while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed  */
+  .mat-calendar-body-disabled {
+    color: var(--item-disable) !important;
+  }
 
+  /* DATE-TIME-PICKER ENDS while https://github.com/h2qutc/angular-material-components/issues/348 is not fixed  */
 
-  // DIALOG STARTS
+  /* DIALOG STARTS  */
   @include mat.dialog-overrides((
     container-color: var(--surface-level-3),
     subhead-color: var(--primary),
     supporting-text-color: var(--secondary),
   ));
 
-  // DIALOG ENDS
+  /* DIALOG ENDS  */
 
-  // MENU STARTS
+  /* MENU STARTS  */
   @include mat.menu-overrides((
     container-color: var(--surface-level-3),
     item-icon-color: var(--secondary),
     item-label-text-color: var(--secondary),
   ));
 
-  // MENU ENDS
+  /* MENU ENDS  */
 
-  // CARD STARTS
+  /* CARD STARTS  */
   @include mat.card-overrides((
     outlined-outline-color: var(--outline-80),
     outlined-container-color: var(--surface-level-1),
     elevated-container-color: var(--surface-level-1),
+    subtitle-text-color: (--secondary)
   ));
 
-  // CARD ENDS
+  /* CARD ENDS  */
 
-  // TOOLTIP STARTS
+  /* TOOLTIP STARTS  */
   @include mat.tooltip-overrides((
     container-color: var(--basic-1),
     supporting-text-color: var(--basic-2),
   ));
-  // TOOLTIP ENDS
+  /* TOOLTIP ENDS  */
 
-  // SELECT STARTS
-  @include mat.select-overrides((panel-background-color:var(--surface-level-3)));
-  // SELECT ENDS
+  /* SELECT STARTS  */
+  @include mat.select-overrides((
+    panel-background-color:var(--surface-level-3),
+    placeholder-text-color: var(--tertiary),
+    enabled-arrow-color: var(--basic-1)
+  ));
 
-  // SLIDE TODDLE STARTS
+  // vulnerable material styles reassignment
+  .mat-mdc-select-panel {
+    .mdc-list-item--selected {
+      background-color: var(--state-gold-hover) !important;
+
+      .mdc-list-item__primary-text {
+        color: var(--primary) !important;
+      }
+
+
+      &.mat-mdc-option-active {
+        background-color: var(--state-gold-pressed) !important;
+      }
+    }
+
+    .mat-mdc-option-pseudo-checkbox {
+      border-color: var(--outline-100) !important;
+    }
+
+    .mat-pseudo-checkbox-checked {
+      border-color: var(--gold-primary) !important;
+    }
+  }
+
+  /* SELECT ENDS  */
+
+  /* SLIDE TODDLE STARTS  */
   @include mat.slide-toggle-overrides((
     selected-handle-color: var(--surface-level-3),
     selected-icon-color: var(--basic-1),
@@ -859,85 +952,229 @@ html {
     unselected-pressed-handle-color: var(--basic-1),
     unselected-focus-handle-color: var(--basic-1),
   ));
-  // SLIDE TODDLE ENDS
+  /* SLIDE TODDLE ENDS  */
 
-  // RADIO BUTTON STARTS
+  /* RADIO BUTTON STARTS  */
   @include mat.radio-overrides((
     unselected-icon-color: var(--outline-100),
     unselected-hover-icon-color: var(--outline-100),
     unselected-focus-icon-color: var(--outline-100),
   ));
-  // RADIO BUTTON ENDS
+  /* RADIO BUTTON ENDS  */
 
-  // BOTTOM SHEET STARTS
+  /* BOTTOM SHEET STARTS  */
 
   @include mat.bottom-sheet-overrides((
     container-background-color: var(--surface-level-3),
   ));
 
-  // BOTTOM SHEET ENDS
+  /* BOTTOM SHEET ENDS  */
 
-  // SNACKBAR STARTS
+  /* SNACKBAR STARTS  */
   @include mat.snack-bar-overrides((
     container-color: var(--gold-tertiary),
     supporting-text-color: var(--basic-2),
     button-color: var(--gold-on-tertiary),
   ));
-  // SNACKBAR ENDS
+  /* SNACKBAR ENDS  */
+
+  /* SIDENAV STARTS  */
+  @include mat.sidenav-overrides((
+    container-background-color: var(--surface-level-2),
+    container-text-color: var(--basic-1),
+  ));
+  /* SIDENAV ENDS  */
+
+  /* PAGINATOR STARTS  */
+  @include mat.paginator-overrides((
+    container-text-color: var(--primary),
+    enabled-icon-color: var(--primary),
+  ));
+
+  /* PAGINATOR ENDS  */
+
+  /* TABLE STARTS  */
+
+  @include mat.table-overrides((
+    row-item-label-text-color: var(--secondary),
+    header-headline-color: var(--primary),
+  ));
+
+  /* TABLE ENDS  */
+
+  /* TAB STARTS  */
+  @include mat.tabs-overrides((
+    active-indicator-color: var(--gold-primary),
+    divider-color: var(--outline-80),
+    inactive-label-text-color: var(--basic-1),
+    active-label-text-color: var(--gold-on-secondary),
+  ));
+  /* TAB ENDS  */
+
+
+  /* EXPANSION PANEL STARTS  */
+  @include mat.expansion-overrides((
+    // TODO ask what should be here - no example at all
+    container-background-color: var(--surface-level-2),
+    container-text-color: var(--primary),
+    header-indicator-color: var(--primary)
+  ));
+  /* EXPANSION PANEL ENDS  */
+
+  /* BADGE STARTS  */
+  @include mat.badge-overrides((
+    background-color: var(--negative),
+    text-color: var(--basic-2),
+  ));
+  /* BADGE ENDS  */
 }
 
 
-// TAGS STYLES START; The tags have different color variants (e.g., `.tag--blue`, `.tag--red`)
-@mixin tag-size($padding, $font-size, $line-height, $font-weight, $letter-spacing) {
-  padding: $padding;
-  font-size: $font-size;
-  line-height: $line-height;
-  font-weight: $font-weight;
-  letter-spacing: $letter-spacing;
+/* TAGS STYLES START; The tags have different color variants (e.g., `.c-tag--blue`, `.c-tag--red`) with to sizes: small bt default, and large when the class `.large` is added.  */
+
+@mixin c-tag-small {
+  padding: 4px 8px;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
-$tag-colors: (
-  blue: (var(--informative), var(--informative-bg)),
-  red: (var(--negative), var(--negative-bg)),
-  orange: (var(--notice), var(--notice-bg)),
-  green: (var(--positive), var(--positive-bg)),
-  grey: (var(--neutral), var(--neutral-bg)),
-  pine: (var(--pine), var(--pine-bg)),
-  pink: (var(--pink), var(--pink-bg)),
-  dark-blue: (var(--dark-blue), var(--dark-blue-bg)),
-  indigo: (var(--indigo), var(--indigo-bg)),
-  purple: (var(--purple), var(--purple-bg))
-);
+@mixin c-tag-large {
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
 
-.tag {
-  @each $name, $colors in $tag-colors {
-    &--#{$name} {
-      @include tag-size(4px 8px, 11px, 16px, 500, 0.5px); // Small size
+@mixin c-tag-default {
+  cursor: default;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--corner-full);
+  height: 16px;
+}
 
-      cursor: default;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      border-radius: var(--corner-full);
-      height: 16px;
+.c-tag {
+  &--blue {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--informative);
+    background-color: var(--informative-bg);
 
-      color: nth($colors, 1);
-      background-color: nth($colors, 2);
+    .large {
+      @include c-tag-large;
+    }
+  }
 
-      &.large {
-        @include tag-size(8px 12px, 12px, 16px, 600, 0.2px); // Large size
-        height: 24px;
-      }
+  &--red {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--negative);
+    background-color: var(--negative-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--orange {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--notice);
+    background-color: var(--notice-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--green {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--positive);
+    background-color: var(--positive-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--grey {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--neutral);
+    background-color: var(--neutral-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--pine {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--pine);
+    background-color: var(--pine-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--pink {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--pink);
+    background-color: var(--pink-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--dark-blue {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--dark-blue);
+    background-color: var(--dark-blue-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--indigo {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--indigo);
+    background-color: var(--indigo-bg);
+
+    .large {
+      @include c-tag-large;
+    }
+  }
+
+  &--purple {
+    @include c-tag-default;
+    @include c-tag-small;
+    color: var(--purple);
+    background-color: var(--purple-bg);
+
+    .large {
+      @include c-tag-large;
     }
   }
 }
 
-// TAGS STYLES END
+/* TAGS STYLES END  */
 
 
-// TYPOGRAPHY STYLES START
-.display-large {
+/* TYPOGRAPHY STYLES START  */
+.c-display-large {
   color: var(--primary);
   font-size: 57px;
   font-style: normal;
@@ -946,7 +1183,7 @@ $tag-colors: (
   letter-spacing: -0.25px;
 }
 
-.display-medium {
+.c-display-medium {
   color: var(--primary);
   font-size: 45px;
   font-style: normal;
@@ -954,7 +1191,7 @@ $tag-colors: (
   line-height: 52px;
 }
 
-.display-small {
+.c-display-small {
   color: var(--primary);
   font-size: 36px;
   font-style: normal;
@@ -962,7 +1199,7 @@ $tag-colors: (
   line-height: 44px;
 }
 
-.headline-large {
+.c-headline-large {
   color: var(--primary);
   font-size: 32px;
   font-style: normal;
@@ -970,7 +1207,7 @@ $tag-colors: (
   line-height: 40px;
 }
 
-.heading-medium {
+.c-heading-medium {
   color: var(--primary);
   font-size: 28px;
   font-style: normal;
@@ -978,7 +1215,7 @@ $tag-colors: (
   line-height: 36px; /* 128.571% */
 }
 
-.headline-small {
+.c-headline-small {
   color: var(--primary);
   font-size: 24px;
   font-style: normal;
@@ -986,7 +1223,7 @@ $tag-colors: (
   line-height: 32px;
 }
 
-.title-large {
+.c-title-large {
   color: var(--primary);
   font-size: 22px;
   font-style: normal;
@@ -994,7 +1231,7 @@ $tag-colors: (
   line-height: 28px;
 }
 
-.title-medium {
+.c-title-medium {
   color: var(--primary);
   font-size: 16px;
   font-style: normal;
@@ -1003,7 +1240,7 @@ $tag-colors: (
   letter-spacing: 0.15px;
 }
 
-.title-small {
+.c-title-small {
   color: var(--primary);
   font-size: 14px;
   font-style: normal;
@@ -1012,7 +1249,7 @@ $tag-colors: (
   letter-spacing: 0.1px;
 }
 
-.body-large {
+.c-body-large {
   color: var(--primary);
   font-size: 16px;
   font-style: normal;
@@ -1021,7 +1258,7 @@ $tag-colors: (
   letter-spacing: 0.2px;
 }
 
-.body-medium {
+.c-body-medium {
   color: var(--primary);
   font-size: 14px;
   font-style: normal;
@@ -1030,7 +1267,7 @@ $tag-colors: (
   letter-spacing: 0.25px;
 }
 
-.body-small {
+.c-body-small {
   color: var(--primary);
   font-size: 12px;
   font-style: normal;
@@ -1039,7 +1276,7 @@ $tag-colors: (
   letter-spacing: 0.2px;
 }
 
-.label-large {
+.c-label-large {
   color: var(--primary);
   font-size: 14px;
   font-style: normal;
@@ -1048,7 +1285,7 @@ $tag-colors: (
   letter-spacing: 0.1px;
 }
 
-.label-medium {
+.c-label-medium {
   color: var(--primary);
   font-size: 12px;
   font-style: normal;
@@ -1057,7 +1294,7 @@ $tag-colors: (
   letter-spacing: 0.2px;
 }
 
-.label-small {
+.c-label-small {
   color: var(--primary);
   font-size: 11px;
   font-style: normal;
@@ -1066,16 +1303,47 @@ $tag-colors: (
   letter-spacing: 0.5px;
 }
 
-// TYPOGRAPHY STYLES END
+/* TYPOGRAPHY STYLES END  */
 
 
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+/* ADDITIONAL STYLES  START */
+
+.mat-mdc-snack-bar-container.snackbar--success .mdc-snackbar__surface {
+  background-color: var(--positive);
+  color: var(--primary-inv) !important;
 }
 
-.flex {
-  display: flex;
-  gap: 16px;
+.mat-mdc-snack-bar-container.snackbar--fail .mdc-snackbar__surface {
+  background-color: var(--negative);
+  color: var(--primary-inv) !important;
 }
+
+.mat-mdc-snack-bar-container.snackbar--warn .mdc-snackbar__surface {
+  background-color: var(--notice);
+  color: var(--primary-inv) !important;
+}
+
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action {
+  color: var(--primary-inv) !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+  color: var(--primary-inv) !important;
+}
+
+.int-tool-dialog {
+  .int-tool-dialog__title {
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .mdc-dialog__title {
+    padding: var(--space-8) var(--space-12) var(--space-4) var(--space-8);
+  }
+
+  .mdc-dialog__actions {
+    padding: var(--space-4) var(--space-12) var(--space-8) var(--space-12);
+  }
+}
+
+/* ADDITIONAL STYLES  END */
