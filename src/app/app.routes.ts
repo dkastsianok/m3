@@ -88,5 +88,9 @@ export const routes: Routes = [
   {
     path: 'typography',
     loadComponent: () => import('./components/typography/typography.component').then(c => c.TypographyComponent),
+  },
+  {
+    path: 'tabs',
+    loadComponent: () => import('./components/tabs/tabs.component').then(c => c.TabsComponent),
   }
 ];

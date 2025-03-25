@@ -311,8 +311,8 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --basic-black-only: #0F0F0F;
     --basic-white-only: #F9F9F9;
 
-    --item-disable: rgba(15, 15, 15, 0.32); // #0F0F0F · 32%
-    --container-disabled: rgba(15, 15, 15, 0.12); // #0F0F0F · 12%
+    --item-disable: rgba(15, 15, 15, var(--item-disable-opacity)); // color[--item-disable-color] + opacity[--item-disable-opacity]
+    --container-disabled: rgba(15, 15, 15, var(--container-disabled-opacity)); // color[--container-disabled-color] + opacity[--container-disabled-opacity]
 
     --highlight-08: rgba(0, 0, 0, var(--highlight-08-opacity)); // color[--highlight-color]
     --highlight-12: rgba(0, 0, 0, var(--highlight-12-opacity)); // color[--highlight-color]
@@ -379,6 +379,12 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --state-error-pressed--dim-opacity: 0.12;
     --state-error-drag--dim-opacity: 0.16;
 
+    --container-disabled-color: #0F0F0F;
+    --container-disabled-opacity: 0.12;
+
+    --item-disable-color: #0F0F0F;
+    --item-disable-opacity: 0.32;
+
     --highlight-color: #000000;
 
     --highlight-08-opacity: 0.08;
@@ -443,8 +449,8 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --basic-black-only: #0F0F0F;
     --basic-white-only: #F9F9F9;
 
-    --item-disable: rgba(249, 249, 249 0.22); // #F9F9F9 · 22%
-    --container-disabled: rgba(249, 249, 249, 0.08); // #F9F9F9 · 8%
+    --item-disable: rgba(249, 249, 249, var(--item-disable-opacity)); // // color[--item-disable-color] + opacity[--item-disable-opacity]
+    --container-disabled: rgba(249, 249, 249, var(--container-disabled)); // color[--container-disabled-color] + opacity[--container-disabled-opacity]
 
     --highlight-08: rgba(255, 255, 255, var(--highlight-08-opacity)); // color[--highlight-color]
     --highlight-12: rgba(255, 255, 255, var(--highlight-12-opacity)); // color[--highlight-color]
@@ -510,6 +516,12 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     --state-error-hover--dim-opacity: 0.18;
     --state-error-pressed--dim-opacity: 0.32;
     --state-error-drag--dim-opacity: 0.48;
+
+    --item-disable-color: #F9F9F9;
+    --item-disable-opacity: 0.22;
+
+    --container-disabled-color: #F9F9F9;
+    --container-disabled-opacity: 0.08;
 
     --highlight-color: #FFFFFF;
 
@@ -827,12 +839,12 @@ html {
     calendar-date-today-disabled-state-outline-color: var(--container-disabled),
     calendar-date-selected-disabled-state-background-color: var(--container-disabled),
     calendar-date-focus-state-background-color: var(--state-gold-pressed),
-    // TODO - not in design system yet
-    calendar-date-in-comparison-range-state-background-color: red !important,
-    calendar-date-in-range-state-background-color: green !important,
-    calendar-date-in-overlap-range-state-background-color: yellow !important,
-    calendar-date-in-overlap-range-selected-state-background-color: blue !important
-    //
+    calendar-date-in-comparison-range-state-background-color: var(--state-gold-pressed) !important,
+    // TODO - --gold-primary-alt change when clear what color to use
+    calendar-date-in-range-state-background-color: var(--gold-primary-alt) !important,
+    // TODO - --gold-primary-alt change when clear what color to use
+    calendar-date-in-overlap-range-state-background-color: var(--gold-primary-alt) !important,
+    calendar-date-in-overlap-range-selected-state-background-color: var(--state-gold-drag--dim) !important,
   ));
 
   /* DATEPICKER ENDS  */
@@ -940,17 +952,24 @@ html {
   /* SLIDE TODDLE STARTS  */
   @include mat.slide-toggle-overrides((
     selected-handle-color: var(--surface-level-3),
-    selected-icon-color: var(--basic-1),
     selected-hover-state-layer-color: var(--highlight-color),
     selected-hover-handle-color: var(--surface-level-3),
     selected-pressed-handle-color: var(--surface-level-3),
     selected-focus-handle-color: var(--surface-level-3),
-    unselected-hover-state-layer-color: var(--highlight-color),
-    unselected-handle-color: var(--basic-1),
-    unselected-icon-color: var(--surface-level-3),
     unselected-hover-handle-color: var(--basic-1),
     unselected-pressed-handle-color: var(--basic-1),
     unselected-focus-handle-color: var(--basic-1),
+    unselected-hover-state-layer-color: var(--highlight-color),
+    unselected-handle-color: var(--basic-1),
+    disabled-unselected-handle-color: var(--container-disabled-color),
+    disabled-unselected-handle-opacity: var(--container-disabled-opacity),
+    disabled-selected-handle-color: var(--surface-level-3),
+    disabled-selected-track-color: var(--container-disabled-color),
+    // hide the default icon
+    disabled-unselected-icon-color: rgba(0, 0, 0, 0),
+    disabled-selected-icon-color: rgba(0, 0, 0, 0),
+    selected-icon-color: rgba(0, 0, 0, 0),
+    unselected-icon-color: rgba(0, 0, 0, 0),
   ));
   /* SLIDE TODDLE ENDS  */
 
@@ -1002,19 +1021,21 @@ html {
 
   /* TABLE ENDS  */
 
-  /* TAB STARTS  */
+  /* TABS STARTS  */
   @include mat.tabs-overrides((
     active-indicator-color: var(--gold-primary),
     divider-color: var(--outline-80),
     inactive-label-text-color: var(--basic-1),
     active-label-text-color: var(--gold-on-secondary),
+    active-ripple-color: var(--state-gold-color),
+    inactive-ripple-color: var(--state-gold-color),
+    active-indicator-shape: var(--corner-xs),
   ));
-  /* TAB ENDS  */
+  /* TABS ENDS  */
 
 
   /* EXPANSION PANEL STARTS  */
   @include mat.expansion-overrides((
-    // TODO ask what should be here - no example at all
     container-background-color: var(--surface-level-2),
     container-text-color: var(--primary),
     header-indicator-color: var(--primary)
@@ -1027,6 +1048,96 @@ html {
     text-color: var(--basic-2),
   ));
   /* BADGE ENDS  */
+
+  /* INPUT / TEXTAREA STARTS */
+
+  // vulnerable material styles reassignment
+  .mat-mdc-form-field:has(textarea),
+  .mat-mdc-form-field:has(input) {
+    textarea::placeholder,
+    input::placeholder {
+      color: var(--tertiary) !important;
+    }
+
+
+    .mat-mdc-form-field-icon-prefix {
+      padding: 0 4px;
+    }
+
+    &:has(textarea:not([disabled])),
+    &:has(input:not([disabled])) {
+      --mdc-filled-text-field-error-hover-label-text-color: var(--gold-on-secondary);
+      --mdc-filled-text-field-error-hover-active-indicator-color: var(--outline-90);
+      --mdc-filled-text-field-focus-label-text-color: var(--gold-on-secondary);
+      --mdc-outlined-text-field-hover-outline-color: var(--gold-primary);
+      --mdc-outlined-text-field-hover-label-text-color: var(--gold-on-secondary);
+      --mdc-outlined-text-field-focus-label-text-color: var(--gold-on-secondary);
+      --mat-form-field-trailing-icon-color: var(--neutral);
+      --mat-form-field-leading-icon-color: var(--neutral);
+      --mdc-icon-button-icon-color: var(--basic-1);
+      --mat-form-field-state-layer-color: var(--state-gold-color);
+    }
+
+    &:has(.ng-invalid.ng-touched) {
+      --mdc-filled-text-field-error-hover-label-text-color: var(--error-on-secondary);
+      --mdc-filled-text-field-error-hover-active-indicator-color: var(--error-primary);
+      --mat-form-field-error-hover-trailing-icon-color: var(--error-on-secondary);
+      --mdc-outlined-text-field-error-hover-outline-color: var(--error-primary);
+      --mdc-outlined-text-field-error-hover-label-text-color: var(--error-on-secondary);
+      --mdc-icon-button-icon-color: var(--error-primary);
+      --mat-form-field-state-layer-color: var(--error-primary);
+    }
+
+    //textarea[matInput] {
+    //  min-height: 40px;
+    //  line-height: 20px;
+    //  padding: 10px 0;
+    //  box-sizing: border-box;
+    //  resize: vertical;
+    //}
+
+    &.compact {
+      --mat-form-field-container-vertical-padding: 2px;
+      --mat-form-field-container-height: 40px;
+      --mat-form-field-container-text-size: 14px;
+      --mat-form-field-container-text-line-height: 20px;
+      --mat-form-field-filled-with-label-container-padding-top: 0;
+
+      --icon-size: 20px;
+
+      .material-icons {
+        font-size: var(--icon-size);
+      }
+
+      .mat-icon {
+        height: var(--icon-size);
+        width: var(--icon-size);
+      }
+
+
+      &.mat-form-field-appearance-fill:has(label) {
+        .mdc-text-field__input {
+          padding-top: 12px;
+        }
+      }
+
+      .mdc-text-field__input {
+        padding-top: 8px;
+      }
+    }
+  }
+
+  /* INPUT / TEXTAREA ENDS */
+
+  /* PROGRESS BAR STARTS  */
+
+  @include mat.progress-bar-overrides((
+    track-shape: var(--corner-xs),
+    track-color: var(--state-gold-drag--dim)
+  ));
+
+  /* PROGRESS BAR ENDS  */
+
 }
 
 
@@ -1306,6 +1417,7 @@ html {
 /* TYPOGRAPHY STYLES END  */
 
 
+// TODO: should be considered to be removed in the future
 /* ADDITIONAL STYLES  START */
 
 .mat-mdc-snack-bar-container.snackbar--success .mdc-snackbar__surface {

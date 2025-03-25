@@ -37,6 +37,7 @@ export class AppComponent {
     {title: 'Bottom Sheet', icon: 'mail', link: '/bottom-sheet'},
     {title: 'Snackbar', icon: 'mail', link: '/snack-bar'},
     {title: 'Tags', icon: 'mail', link: '/tags'},
+    {title: 'Tabs', icon: 'mail', link: '/tabs'},
   ]
   private renderer: Renderer2;
   private currentTheme: 'light-theme' | 'dark-theme' = 'light-theme';

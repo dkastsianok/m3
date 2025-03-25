@@ -57,4 +57,16 @@
     <mat-datepicker-toggle [for]="picker" matIconSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker3">
+      <input matStartDate placeholder="Start date">
+      <input matEndDate placeholder="End date">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY 33</mat-hint>
+    <mat-datepicker-toggle [for]="picker3" matIconSuffix></mat-datepicker-toggle>
+    <mat-date-range-picker #picker3></mat-date-range-picker>
+  </mat-form-field>
 </div>

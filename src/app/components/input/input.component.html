@@ -1,130 +1,371 @@
-<div class="flex-column">
-  <mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="value" #input="ngModel"
-           pattern="^[0-9]+$" required>
-
-    @if (value) {
-      <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    }
-
-
-    <mat-error *ngIf="input.hasError(
-      'pattern') || input.hasError('required')">
-      Error
-    </mat-error>
-  </mat-form-field>
-
-
-  <mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" disabled [(ngModel)]="value" #input="ngModel"
-           pattern="^[0-9]+$" required>
-
-    @if (value) {
-      <button matSuffix mat-icon-button aria-label="Clear" class="icon-plain-button" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    }
-
-    <mat-error *ngIf="input.hasError(
-      'pattern') || input.hasError('required')">
-      Error
-    </mat-error>
-  </mat-form-field>
-
-
-  <mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    @if (value) {
-      <button matPrefix class="icon-plain-button" mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    }
-  </mat-form-field>
+<div class="">Иконки сзади и спереди - цвет один (можно разные), то, что с экшеном кнопочки сзади - это другое</div>
+<div class="">Label - можно поменять цвет в зависимости от состояния (кликнуто. чет написано) или когда не активно, но я
+  бы оставила одного цвета - если это ок
 </div>
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-           placeholder="Ex. pat@example.com">
-    <mat-hint>Errors appear instantly!</mat-hint>
-    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-      <mat-error>Please enter a valid email address</mat-error>
-    }
-    @if (emailFormControl.hasError('required')) {
-      <mat-error>Email is <strong>required</strong></mat-error>
-    }
-  </mat-form-field>
-</form>
+
+<div class="grid">
+  <div class="flex-column">
+    <div class="">
+      <div class="text"> Text field-filled--standart</div>
+
+      <div class="flex-column">
+        <mat-form-field class="example-form-field">
+          <mat-label>Clearable input</mat-label>
+          <input #input="ngModel" [(ngModel)]="value" matInput pattern="^[0-9]+$"
+                 required type="text">
+          @if (value) {
+            <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          }
+          <mat-error *ngIf="input.hasError(
+      'pattern') || input.hasError('required')">
+            Error
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>Email</mat-label>
+          <input [errorStateMatcher]="matcher" [formControl]="emailFormControl" matInput
+                 placeholder="Ex. pat@example.com"
+                 type="email">
+
+          <button (click)="value=''" aria-label="Clear" class="icon-plain-button" mat-icon-button matSuffix>
+            <mat-icon>cancel</mat-icon>
+          </button>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="telephoneFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="telephoneFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="disabledFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+      </div>
 
 
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Message</mat-label>
-    <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-    <mat-hint align="start"><strong>Don't disclose personal info</strong></mat-hint>
-    <mat-hint align="end">{{ message.value.length }} / 256</mat-hint>
-  </mat-form-field>
-</form>
+    </div>
+
+    <div class="">
+      <div class="text">Text field-outlined--standart</div>
+      <div class="flex-column">
+        <mat-form-field appearance="outline" class="example-form-field">
+          <mat-label>Clearable input</mat-label>
+          <input #input="ngModel" [(ngModel)]="value" matInput pattern="^[0-9]+$"
+                 required type="text">
+          @if (value) {
+            <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          }
+          <mat-error *ngIf="input.hasError(
+      'pattern') || input.hasError('required')">
+            Error
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-form-field">
+          <mat-label>Email</mat-label>
+          <input [errorStateMatcher]="matcher" [formControl]="emailFormControl" matInput
+                 placeholder="Ex. pat@example.com"
+                 type="email">
+
+          <button (click)="value=''" aria-label="Clear" class="icon-plain-button" mat-icon-button matSuffix>
+            <mat-icon>cancel</mat-icon>
+          </button>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="telephoneFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="disabledFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+      </div>
+    </div>
 
 
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Telephone</mat-label>
-    <span matTextPrefix>+1 &nbsp;</span>
-    <input type="tel" matInput placeholder="555-555-1234">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-</form>
+    <div class="">
+      <div class="text">TextArea</div>
 
-<mat-divider>
-</mat-divider>
+      <mat-form-field>
+        <mat-label>Leave</mat-label>
+        <textarea
+          [formControl]="textareaFormControl"
+          matInput
+        ></textarea>
+        <mat-hint>Support</mat-hint>
+        <mat-icon matSuffix>mode_edit</mat-icon>
+        @if (textareaFormControl.hasError('required')) {
+          <mat-error>Field is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
 
-<mat-form-field class="example-form-field-2" appearance="outline">
-  <mat-label>Clearable input</mat-label>
-  <input matInput type="text" [(ngModel)]="value">
-  @if (value) {
-    <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  }
-</mat-form-field>
+    <div class="">
+      <div class="text">TextArea OUtlined</div>
 
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-           placeholder="Ex. pat@example.com">
-    <mat-hint>Errors appear instantly!</mat-hint>
-    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-      <mat-error>Please enter a valid email address</mat-error>
-    }
-    @if (emailFormControl.hasError('required')) {
-      <mat-error>Email is <strong>required</strong></mat-error>
-    }
-  </mat-form-field>
-</form>
+      <mat-form-field appearance="outline">
+        <mat-label>Leave</mat-label>
+        <textarea
+          [formControl]="textareaFormControl"
+          matInput
+
+          placeholder="grgr"
+        ></textarea>
+        <mat-hint>Support</mat-hint>
+        @if (textareaFormControl.hasError('required')) {
+          <mat-error>Field is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="flex-column">
+    <div class="">
+      <div class="text"> Text field-filled--compact</div>
+
+      <div class="flex-column">
+        <mat-form-field class="example-form-field compact">
+          <input matInput pattern="^[0-9]+$" placeholder="Hi"
+                 required type="text">
+          @if (value) {
+            <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field compact">
+          <mat-label>Clearable input</mat-label>
+          <input #input="ngModel" [(ngModel)]="value" matInput pattern="^[0-9]+$"
+                 required type="text">
+          @if (value) {
+            <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          }
+          <mat-error *ngIf="input.hasError(
+      'pattern') || input.hasError('required')">
+            Error
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field compact">
+          <mat-label>Email</mat-label>
+          <input [errorStateMatcher]="matcher" [formControl]="emailFormControl" matInput
+                 placeholder="Ex. pat@example.com"
+                 type="email">
+
+          <button (click)="value=''" aria-label="Clear" class="icon-plain-button" mat-icon-button matSuffix>
+            <mat-icon>cancel</mat-icon>
+          </button>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width compact">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="telephoneFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width compact">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="telephoneFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width compact">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="disabledFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+      </div>
 
 
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Message</mat-label>
-    <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-    <mat-hint align="start"><strong>Don't disclose personal info</strong></mat-hint>
-    <mat-hint align="end">{{ message.value.length }} / 256</mat-hint>
-  </mat-form-field>
-</form>
+    </div>
+
+    <div class="">
+      <div class="text">Text field-outlined--compact</div>
+      <div class="flex-column">
+        <mat-form-field appearance="outline" class="example-form-field compact">
+          <input matInput pattern="^[0-9]+$" placeholder="Hi"
+                 required type="text">
+          @if (value) {
+            <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-form-field compact">
+          <mat-label>Clearable input</mat-label>
+          <input #input="ngModel" [(ngModel)]="value" matInput pattern="^[0-9]+$"
+                 required type="text">
+          @if (value) {
+            <button class="icon-plain-button" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          }
+          <mat-error *ngIf="input.hasError(
+      'pattern') || input.hasError('required')">
+            Error
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-form-field compact">
+          <mat-label>Email</mat-label>
+          <input [errorStateMatcher]="matcher" [formControl]="emailFormControl" matInput
+                 placeholder="Ex. pat@example.com"
+                 type="email">
+
+          <button (click)="value=''" aria-label="Clear" class="icon-plain-button" mat-icon-button matSuffix>
+            <mat-icon>cancel</mat-icon>
+          </button>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width compact">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="telephoneFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width compact">
+          <mat-label>Telephone</mat-label>
+          <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+          <input [formControl]="disabledFormControl" matInput placeholder="555-555-1234" type="tel">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+
+          @if (telephoneFormControl.hasError('pattern')) {
+            <mat-error>Please enter a valid telephone</mat-error>
+          }
+        </mat-form-field>
+
+      </div>
+    </div>
 
 
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Telephone</mat-label>
-    <span matTextPrefix>+1 &nbsp;</span>
-    <input type="tel" matInput placeholder="555-555-1234">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-</form>
+    <div class="">
+      <div class="text">TextArea Compact</div>
+
+      <mat-form-field class="compact">
+        <mat-label>Leave</mat-label>
+        <textarea
+          [formControl]="textareaFormControl"
+          matInput
+        ></textarea>
+        <mat-hint>Support</mat-hint>
+        @if (textareaFormControl.hasError('required')) {
+          <mat-error>Field is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="">
+      <div class="text">TextArea OUtlined</div>
+
+      <mat-form-field appearance="outline" class="compact">
+        <mat-label>Leave</mat-label>
+        <textarea
+          [formControl]="textareaFormControl"
+          matInput
+          placeholder="grgr"
+        ></textarea>
+        <mat-hint>Support</mat-hint>
+        @if (textareaFormControl.hasError('required')) {
+          <mat-error>Field is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+

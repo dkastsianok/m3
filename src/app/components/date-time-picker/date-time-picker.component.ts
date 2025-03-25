@@ -62,7 +62,7 @@ export class DateTimePickerComponent {
   public control = new FormControl<Date | undefined>(undefined, {nonNullable: true});
   readonly campaignOne = new FormGroup({
     start: new FormControl(new Date(year, month, 13)),
-    end: new FormControl(new Date(year, month, 16)),
+    end: new FormControl(new Date(year, month, 17)),
   });
   readonly campaignTwo = new FormGroup({
     start: new FormControl(new Date(year, month, 15)),
