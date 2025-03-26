@@ -2,10 +2,11 @@ import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButtonModule, MatIconButton} from '@angular/material/button';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {ErrorStateMatcher, MatOption} from '@angular/material/core';
 import {MatError, MatFormField, MatFormFieldModule, MatHint, MatLabel} from '@angular/material/form-field';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelect} from '@angular/material/select';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,7 +27,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatLabel,
     MatHint,
     MatError,
-    MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, NgIf
+    MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, NgIf, MatOption, MatSelect
   ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'
@@ -40,4 +41,17 @@ export class InputComponent {
   textareaFormControl = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
+
+
+  disableSelect = new FormControl(false);
+
+  selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
+
+  selectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
+
+  nativeSelectFormControl = new FormControl('valid', [
+    Validators.required,
+    Validators.pattern('valid'),
+  ]);
+
 }

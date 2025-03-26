@@ -3,6 +3,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* stylelint-disable custom-property-pattern */
+
 $light-palettes: (
   primary: (
     0: rgba(0, 0, 0, 0),
@@ -42,7 +44,7 @@ $light-palettes: (
   ),
   tertiary: (
     0: rgba(0, 0, 0, 0),
-    10: rgba(0, 0, 0, 0), //on-tertiary-fixed
+    10: rgba(0, 0, 0, 0), // on-tertiary-fixed
     20: rgba(0, 0, 0, 0),
     25: rgba(0, 0, 0, 0),
     30: rgba(0, 0, 0, 0), // on-tertiary-container, on-tertiary-fixed-variant
@@ -549,43 +551,7 @@ $dark-tertiary-palette: map.merge(map.get($dark-palettes, tertiary), $rest-dark)
     /* Non-existent vars end  */
 
   }
-}
 
-html {
-  height: 100%;
-
-  body {
-    height: 100%;
-    margin: 0;
-    font-family: Inter, sans-serif;
-  }
-
-  @include mat.theme(
-      (
-        color: (
-          primary: $light-primary-palette,
-        ),
-        typography: Inter,
-      ),
-    $overrides: (
-      background: var(--surface-level-1),
-    )
-  );
-
-}
-
-.dark-theme {
-  @include mat.theme((
-    color:(
-      primary: $dark-primary-palette,
-    )
-  ),
-  $overrides: (
-    background: var(--surface-level-1),
-  ));
-}
-
-:root {
   /* BUTTONS START */
   @include mat.button-overrides((
     // flat btn
@@ -860,17 +826,17 @@ html {
       fill: var(--basic-1) !important;
     }
 
-    .mat-calendar-body-disabled {
-      .mat-calendar-body-cell-content {
-        color: var(--item-disable) !important;
-      }
-    }
-
     .mat-calendar-body-cell-content {
       color: var(--basic-1) !important;
 
       &.mat-calendar-body-selected {
         color: var(--basic-black-only) !important;
+      }
+    }
+
+    .mat-calendar-body-disabled {
+      .mat-calendar-body-cell-content {
+        color: var(--item-disable) !important;
       }
     }
   }
@@ -915,39 +881,6 @@ html {
     supporting-text-color: var(--basic-2),
   ));
   /* TOOLTIP ENDS  */
-
-  /* SELECT STARTS  */
-  @include mat.select-overrides((
-    panel-background-color:var(--surface-level-3),
-    placeholder-text-color: var(--tertiary),
-    enabled-arrow-color: var(--basic-1)
-  ));
-
-  // vulnerable material styles reassignment
-  .mat-mdc-select-panel {
-    .mdc-list-item--selected {
-      background-color: var(--state-gold-hover) !important;
-
-      .mdc-list-item__primary-text {
-        color: var(--primary) !important;
-      }
-
-
-      &.mat-mdc-option-active {
-        background-color: var(--state-gold-pressed) !important;
-      }
-    }
-
-    .mat-mdc-option-pseudo-checkbox {
-      border-color: var(--outline-100) !important;
-    }
-
-    .mat-pseudo-checkbox-checked {
-      border-color: var(--gold-primary) !important;
-    }
-  }
-
-  /* SELECT ENDS  */
 
   /* SLIDE TODDLE STARTS  */
   @include mat.slide-toggle-overrides((
@@ -1033,7 +966,6 @@ html {
   ));
   /* TABS ENDS  */
 
-
   /* EXPANSION PANEL STARTS  */
   @include mat.expansion-overrides((
     container-background-color: var(--surface-level-2),
@@ -1049,21 +981,60 @@ html {
   ));
   /* BADGE ENDS  */
 
-  /* INPUT / TEXTAREA STARTS */
+  /* INPUT / TEXTAREA / SELECT STARTS */
+
+  @include mat.select-overrides((
+    panel-background-color:var(--surface-level-3),
+    placeholder-text-color: var(--tertiary),
+    enabled-arrow-color: var(--basic-1)
+  ));
 
   // vulnerable material styles reassignment
+  .mat-mdc-form-field:has(mat-select),
   .mat-mdc-form-field:has(textarea),
   .mat-mdc-form-field:has(input) {
+
+    &.compact {
+      --mat-form-field-container-vertical-padding: 2px;
+      --mat-form-field-container-height: 40px;
+      --mat-form-field-container-text-size: 14px;
+      --mat-form-field-container-text-line-height: 20px;
+      --mat-form-field-filled-with-label-container-padding-top: 0;
+
+      --icon-size: 20px;
+
+      .material-icons {
+        font-size: var(--icon-size);
+      }
+
+      .mat-icon {
+        height: var(--icon-size);
+        width: var(--icon-size);
+      }
+
+
+      .mdc-text-field__input {
+        padding-top: 8px;
+      }
+
+      &.mat-form-field-appearance-fill:has(label) {
+        .mdc-text-field__input {
+          padding-top: 12px;
+        }
+      }
+
+    }
+
     textarea::placeholder,
     input::placeholder {
       color: var(--tertiary) !important;
     }
 
-
     .mat-mdc-form-field-icon-prefix {
       padding: 0 4px;
     }
 
+    &:has(mat-select[aria-disabled="false"]),
     &:has(textarea:not([disabled])),
     &:has(input:not([disabled])) {
       --mdc-filled-text-field-error-hover-label-text-color: var(--gold-on-secondary);
@@ -1088,46 +1059,17 @@ html {
       --mat-form-field-state-layer-color: var(--error-primary);
     }
 
-    //textarea[matInput] {
-    //  min-height: 40px;
-    //  line-height: 20px;
-    //  padding: 10px 0;
-    //  box-sizing: border-box;
-    //  resize: vertical;
-    //}
+  }
 
-    &.compact {
-      --mat-form-field-container-vertical-padding: 2px;
-      --mat-form-field-container-height: 40px;
-      --mat-form-field-container-text-size: 14px;
-      --mat-form-field-container-text-line-height: 20px;
-      --mat-form-field-filled-with-label-container-padding-top: 0;
-
-      --icon-size: 20px;
-
-      .material-icons {
-        font-size: var(--icon-size);
-      }
-
-      .mat-icon {
-        height: var(--icon-size);
-        width: var(--icon-size);
-      }
-
-
-      &.mat-form-field-appearance-fill:has(label) {
-        .mdc-text-field__input {
-          padding-top: 12px;
-        }
-      }
-
-      .mdc-text-field__input {
-        padding-top: 8px;
-      }
+  // select panel styles
+  .mat-mdc-select-panel {
+    .mdc-list-item--selected {
+      --mat-option-selected-state-layer-color: var(--gold-primary-alt);
+      --mat-option-selected-state-label-text-color: var(--gold-on-primary);
     }
   }
 
-  /* INPUT / TEXTAREA ENDS */
+  /* INPUT / TEXTAREA / SELECT ENDS */
 
   /* PROGRESS BAR STARTS  */
 
@@ -1140,6 +1082,39 @@ html {
 
 }
 
+html {
+  height: 100%;
+
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, sans-serif;
+  }
+
+  @include mat.theme(
+      (
+        color: (
+          primary: $light-primary-palette,
+        ),
+        typography: Inter,
+      ),
+    $overrides: (
+      background: var(--surface-level-1),
+    )
+  );
+
+}
+
+.dark-theme {
+  @include mat.theme((
+    color:(
+      primary: $dark-primary-palette,
+    )
+  ),
+  $overrides: (
+    background: var(--surface-level-1),
+  ));
+}
 
 /* TAGS STYLES START; The tags have different color variants (e.g., `.c-tag--blue`, `.c-tag--red`) with to sizes: small bt default, and large when the class `.large` is added.  */
 

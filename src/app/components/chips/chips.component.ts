@@ -23,6 +23,8 @@ export interface Fruit {
   styleUrl: './chips.component.css'
 })
 export class ChipsComponent {
+  readonly bestBoys: string[] = ['Samoyed', 'Akita Inu', 'Alaskan Malamute', 'Siberian Husky'];
+
   readonly vegetables = signal<Vegetable[]>([
     {name: 'apple'},
     {name: 'banana'},

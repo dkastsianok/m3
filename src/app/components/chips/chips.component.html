@@ -127,3 +127,16 @@
   </mat-chip>
 
 </mat-chip-set>
+
+
+<mat-chip-listbox aria-label="Cutest dog breeds" class="mat-mdc-chip-set-stacked">
+  @for (dog of bestBoys; track dog) {
+    <mat-chip-option selected>
+      <img
+        alt="Photo of a Shiba Inu"
+        matChipAvatar
+        src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+      />{{ dog }}
+    </mat-chip-option>
+  }
+</mat-chip-listbox>

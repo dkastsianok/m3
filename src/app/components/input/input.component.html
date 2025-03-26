@@ -367,5 +367,88 @@
       </mat-form-field>
     </div>
   </div>
+
+  <div class="flex-column">
+    <mat-form-field [style.width]="'300px'">
+      <mat-label>Choose an option</mat-label>
+      <mat-select [disabled]="disableSelect.value">
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option disabled value="option2">Option 2 (disabled)</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [style.width]="'300px'" appearance="outline">
+      <mat-label>Choose an option</mat-label>
+      <mat-select [disabled]="disableSelect.value">
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option disabled value="option2">Option 2 (disabled)</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [style.width]="'300px'" appearance="outline">
+      <mat-label>Choose an option</mat-label>
+      <mat-select [disabled]="true">
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option disabled value="option2">Option 2 (disabled)</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <h4>mat-select</h4>
+    <mat-form-field [style.width]="'300px'">
+      <mat-label>Choose one</mat-label>
+      <mat-select [errorStateMatcher]="matcher" [formControl]="selected">
+        <mat-option>Clear</mat-option>
+        <mat-option value="valid">Valid option</mat-option>
+        <mat-option value="invalid">Invalid option</mat-option>
+      </mat-select>
+      <mat-hint>Errors appear instantly!</mat-hint>
+      @if (selected.hasError('required')) {
+        <mat-error>You must make a selection</mat-error>
+      }
+      @if (selected.hasError('pattern') && !selected.hasError('required')) {
+        <mat-error>Your selection is invalid</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field [style.width]="'300px'">
+      <mat-label>Choose one</mat-label>
+      <mat-select [errorStateMatcher]="matcher" [formControl]="selected">
+        <mat-option>Clear</mat-option>
+        <mat-option value="valid">Valid option</mat-option>
+        <mat-option value="invalid">Invalid option</mat-option>
+      </mat-select>
+      <mat-hint>Errors appear instantly!</mat-hint>
+      @if (selected.hasError('required')) {
+        <mat-error>You must make a selection</mat-error>
+      }
+      @if (selected.hasError('pattern') && !selected.hasError('required')) {
+        <mat-error>Your selection is invalid</mat-error>
+      }
+
+      <span matIconPrefix><mat-icon>favorite</mat-icon></span>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+
+    </mat-form-field>
+
+    <mat-form-field [style.width]="'300px'" appearance="outline">
+      <mat-label>Choose one</mat-label>
+      <mat-select [errorStateMatcher]="matcher" [formControl]="selected">
+        <mat-option>Clear</mat-option>
+        <mat-option value="valid">Valid option</mat-option>
+        <mat-option value="invalid">Invalid option</mat-option>
+      </mat-select>
+      <mat-hint>Errors appear instantly!</mat-hint>
+      @if (selected.hasError('required')) {
+        <mat-error>You must make a selection</mat-error>
+      }
+      @if (selected.hasError('pattern') && !selected.hasError('required')) {
+        <mat-error>Your selection is invalid</mat-error>
+      }
+    </mat-form-field>
+  </div>
 </div>
 
